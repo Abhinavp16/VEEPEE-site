@@ -70,11 +70,10 @@ export default function Footer() {
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
-                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                        <Link href="/about" className="hover:text-white transition-colors">About</Link>
-                        <Link href="/products" className="hover:text-white transition-colors">Products</Link>
-                        <Link href="/dealership" className="hover:text-white transition-colors">Dealership</Link>
-                        <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
+                        <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                        <Link href="/shipping" className="hover:text-white transition-colors">Shipping Policy</Link>
+                        <Link href="/refund" className="hover:text-white transition-colors">Refund Policy</Link>
                     </div>
 
                     <div className="flex gap-4">
