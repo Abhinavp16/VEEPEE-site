@@ -53,14 +53,39 @@ export default function HeroSection() {
                         </div>
                     </ScrollReveal>
 
-                    {/* Quick Stats */}
-                    <div className="absolute bottom-0 right-0 bg-white p-8 md:p-12 hidden md:grid grid-cols-2 gap-10 rounded-tl-[60px] shadow-[-10px_-10px_30px_rgba(0,0,0,0.1)]">
-                        <div className="text-left border-r border-gray-100 pr-10">
-                            <span className="block text-4xl font-bold text-brand-primary">99.99%</span>
-                            <span className="text-xs uppercase tracking-widest font-black text-gray-400">Response Rate</span>
-                        </div>
-                        <div className="text-left">
-                            <span className="block text-4xl font-bold text-gray-900">Oxon™</span>
+                    {/* Realistic Floating App CTA */}
+                    <div className="absolute bottom-10 right-10 hidden lg:block animate-fade-in-up">
+                        <div className="group relative">
+                            {/* Ambient Glow */}
+                            <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+
+                            <div className="relative backdrop-blur-xl bg-white/5 border border-white/10 p-4 pl-6 rounded-3xl flex items-center gap-8 shadow-2xl overflow-hidden transition-all duration-500 hover:translate-y-[-5px] hover:bg-white/10">
+                                {/* Lens Flare Effect */}
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rotate-45 translate-x-16 -translate-y-16 group-hover:translate-x-12 transition-transform duration-1000"></div>
+
+                                <div className="flex flex-col relative z-10">
+                                    <div className="flex items-center gap-2 mb-1.5">
+                                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_#34d399]"></div>
+                                        <span className="text-[10px] text-white/50 font-black uppercase tracking-[0.2em] leading-none">New Mobile App</span>
+                                    </div>
+                                    <h4 className="text-white font-bold text-lg tracking-tight leading-none">Veepee Impex</h4>
+                                    <p className="text-emerald-400/80 text-[11px] font-bold mt-1 tracking-wide leading-none font-secondary">Connect with us on the go</p>
+                                </div>
+
+                                <Link
+                                    href="#"
+                                    className="relative z-10 bg-white text-gray-900 px-6 py-3 rounded-2xl flex items-center gap-3 hover:bg-emerald-50 transition-all hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)] group/play"
+                                >
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-brand-primary group-hover/play:scale-110 transition-transform duration-500">
+                                        <path d="M17.523 15.341l-2.031-1.127a.382.382 0 00-.51.107c-.456.657-1.144 1.147-1.921 1.354-2.13.567-4.31-.634-4.877-2.764-.567-2.13.634-4.31 2.764-4.877 1.157-.308 2.37.032 3.228.847a.382.382 0 00.528-.016l1.458-1.503a.383.383 0 00-.012-.54c-1.89-1.742-4.632-2.315-7.067-1.666-3.868 1.03-6.048 4.985-5.018 8.853 1.03 3.868 4.985 6.048 8.853 5.018 2.147-.572 3.862-2.008 4.802-3.818a.38.38 0 00-.207-.568z" />
+                                        <path d="M22.84 5.35c.106-.4.004-.814-.268-1.123a1.45 1.45 0 00-1.12-.5h-15a1.45 1.45 0 00-1.45 1.45v13a1.45 1.45 0 001.45 1.45h3v-2.004c0-1.105.895-2 2-2h4v2h-4v2h10c.8 0 1.45-.65 1.45-1.45V5.352z" />
+                                    </svg>
+                                    <div className="flex flex-col items-start leading-none">
+                                        <span className="text-[10px] text-gray-500 font-bold uppercase tracking-tight">Available on</span>
+                                        <span className="text-sm font-black tracking-tight">Play Store</span>
+                                    </div>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
