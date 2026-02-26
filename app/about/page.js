@@ -108,6 +108,21 @@ export default function AboutPage() {
                             We have established ourselves as a powerhouse in the wholesale, distribution, and retail of essential Agriculture and Power tools machinery across Pan India.
                         </p>
 
+                        <div className="mt-10 p-6 bg-neutral-surface rounded-2xl border border-gray-100">
+                            <h3 className="text-xl font-bold text-text-primary mb-4">Business Snapshot</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Type:</span> Trader - Wholesaler/Distributor</p>
+                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Business Models:</span> Retail Business, Wholesale Business</p>
+                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Key People:</span> Vaibhav Banka & Pitambar Gupta</p>
+                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Structure:</span> Partnership</p>
+                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Founded On:</span> 20-12-2023</p>
+                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Team Size:</span> Upto 10 People</p>
+                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Turnover:</span> 0 - 40 L</p>
+                                <p className="text-text-secondary sm:col-span-2"><span className="font-semibold text-text-primary">Partners:</span> Pitambar Gupta, Jhanvi Gupta, Vaibhav Banka</p>
+                                <p className="text-text-secondary sm:col-span-2"><span className="font-semibold text-text-primary">Address:</span> C-15/16, Sector-4, Devendra Nagar, Raipur- 492001</p>
+                            </div>
+                        </div>
+
                         <div className="mt-10 flex items-center gap-6 p-6 bg-brand-light/50 rounded-2xl border border-brand-primary/10">
                             <div className="text-brand-primary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -123,28 +138,51 @@ export default function AboutPage() {
                     </ScrollReveal>
 
                     <ScrollReveal className="relative">
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="space-y-4 pt-12">
+                        <div className="grid grid-cols-2 gap-4 min-h-[760px]">
+                            <div className="space-y-4">
+                                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                                    <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Pan India Reach</p>
+                                    <p className="text-sm font-semibold text-text-primary">Trusted supply network for retail and wholesale demand.</p>
+                                </div>
                                 <img
                                     src="https://images.unsplash.com/photo-1755943421697-a9948e8c6234?w=400&h=600&fit=crop&q=80"
-                                    className="rounded-2xl shadow-lg w-full h-[300px] object-cover"
+                                    className="rounded-2xl shadow-lg w-full h-[260px] object-cover"
                                     alt="Industrial Tools"
                                 />
                                 <div className="bg-brand-primary p-6 rounded-2xl text-white">
                                     <p className="text-3xl font-bold italic mb-1">Since 2023</p>
                                     <p className="text-xs uppercase tracking-tighter opacity-80">Trusted Partnership Firm</p>
                                 </div>
+                                <img
+                                    src="/images/Banner/3.jpg"
+                                    className="rounded-2xl shadow-lg w-full h-[220px] object-cover"
+                                    alt="Power tools setup"
+                                />
                             </div>
                             <div className="space-y-4">
                                 <div className="bg-gray-900 p-8 rounded-2xl text-white text-center">
                                     <p className="text-4xl font-bold mb-2">4.9+</p>
                                     <p className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">Industry Rating</p>
                                 </div>
+                                <div className="relative rounded-2xl overflow-hidden shadow-lg">
+                                    <img
+                                        src="/images/Banner/4.jpg"
+                                        className="w-full h-[160px] object-cover"
+                                        alt="Retail and wholesale operations"
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 flex items-end p-4">
+                                        <p className="text-white text-xs font-semibold uppercase tracking-[0.12em]">Retail + Wholesale Operations</p>
+                                    </div>
+                                </div>
                                 <img
                                     src="https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?w=400&h=600&fit=crop&q=80"
-                                    className="rounded-2xl shadow-lg w-full h-[350px] object-cover"
+                                    className="rounded-2xl shadow-lg w-full h-[300px] object-cover"
                                     alt="Warehouse"
                                 />
+                                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                                    <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Core Team</p>
+                                    <p className="text-sm font-semibold text-text-primary">Built by experienced partners focused on quality and service.</p>
+                                </div>
                             </div>
                         </div>
                         <div className="absolute -z-10 -bottom-10 -right-10 w-48 h-48 bg-brand-light rounded-full blur-3xl" />
@@ -191,7 +229,7 @@ export default function AboutPage() {
                         <div className="flex flex-wrap justify-center gap-4">
                             <a
                                 href="/contact"
-                                className="px-8 py-4 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-secondary transition-all shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] flex items-center gap-3"
+                                className="px-8 py-4 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-secondary transition-all shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] flex items-center gap-3"
                             >
                                 Contact Us
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

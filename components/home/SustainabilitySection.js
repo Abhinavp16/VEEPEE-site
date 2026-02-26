@@ -40,7 +40,7 @@ export default function SustainabilitySection() {
                     <div className="flex flex-wrap gap-4">
                         <Link
                             href="/dealership"
-                            className="px-8 py-4 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-secondary transition-all shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] flex items-center gap-3 group"
+                            className="px-8 py-4 bg-brand-primary text-white rounded-full font-bold hover:bg-brand-secondary transition-all shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] flex items-center gap-3 group"
                         >
                             Join as a Dealer
                             <svg className="group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -187,11 +187,11 @@ export default function ProductsPage() {
                         </p>
                     </ScrollReveal>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center">
                         {featuredProducts.map((product, i) => (
                             <ScrollReveal key={i} delay={i * 100}>
-                                <div className="group bg-white rounded-[2.5rem] p-6 shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full flex flex-col">
-                                    <div className="aspect-square rounded-3xl overflow-hidden mb-6 relative">
+                                <div className="group w-full max-w-[300px] bg-white rounded-[1.5rem] p-4 shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full flex flex-col">
+                                    <div className="aspect-[5/4] rounded-xl overflow-hidden mb-4 relative">
                                         <img
                                             src={product.image}
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -204,9 +204,9 @@ export default function ProductsPage() {
                                             </div>
                                         )}
                                     </div>
-                                    <h4 className="text-lg font-bold text-text-primary mb-2">{product.name}</h4>
-                                    <p className="text-2xl font-black text-brand-primary mb-4">{product.price}</p>
-                                    <ul className="text-xs text-text-secondary space-y-2 mb-6 flex-grow">
+                                    <h4 className="text-sm font-bold text-text-primary mb-1.5">{product.name}</h4>
+                                    <p className="text-lg font-black text-brand-primary mb-2.5">{product.price}</p>
+                                    <ul className="text-[11px] text-text-secondary space-y-1 mb-4 flex-grow">
                                         {product.specs.map((spec, j) => (
                                             <li key={j} className="flex items-center gap-2 font-medium">
                                                 <svg className="w-3 h-3 text-brand-primary shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -218,7 +218,7 @@ export default function ProductsPage() {
                                     </ul>
                                     <Link
                                         href="/contact"
-                                        className="w-full py-3 bg-neutral-surface group-hover:bg-brand-primary group-hover:text-white rounded-2xl text-center text-sm font-bold transition-colors inline-block leading-none"
+                                        className="w-full py-2 bg-neutral-surface group-hover:bg-brand-primary group-hover:text-white rounded-lg text-center text-xs font-bold transition-colors inline-block leading-none"
                                     >
                                         Get Quote
                                     </Link>

@@ -8,10 +8,10 @@ module.exports = {
         extend: {
             colors: {
                 brand: {
-                    primary: '#16a34a',
-                    secondary: '#15803d',
-                    light: '#dcfce7',
-                    dark: '#052e16',
+                    primary: '#f97316',
+                    secondary: '#ea580c',
+                    light: '#ffedd5',
+                    dark: '#7c2d12',
                 },
                 text: {
                     primary: '#111827',
@@ -27,7 +27,7 @@ module.exports = {
                 secondary: ['Inter', 'sans-serif'],
             },
             boxShadow: {
-                cta: '0 4px 14px 0 rgba(22, 163, 74, 0.39)',
+                cta: '0 4px 14px 0 rgba(249, 115, 22, 0.39)',
             },
         },
     },

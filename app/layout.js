@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import RouteMain from "@/components/RouteMain";
 
 export const metadata = {
   title: "Veepee Impex - Agriculture & Power Tools Distributor",
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="font-secondary bg-neutral-background text-text-secondary overflow-x-hidden">
         <Header />
-        <main className="pt-20">{children}</main>
+        <RouteMain>{children}</RouteMain>
         <Footer />
       </body>
     </html>

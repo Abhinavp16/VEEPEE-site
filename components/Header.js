@@ -28,7 +28,7 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed top-4 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8`}
+            className="fixed top-4 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8"
         >
             <nav
                 className={`flex items-center justify-between px-6 py-3 max-w-7xl mx-auto w-full transition-all duration-500 rounded-2xl ${scrolled
@@ -38,14 +38,12 @@ export default function Header() {
             >
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3 group">
-                    <div className="w-11 h-11 bg-brand-primary rounded-xl flex items-center justify-center shadow-cta transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m12 10 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a8 8 0 0 0-16 0v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a4 4 0 0 1 4-4Z" />
-                            <path d="M12 2v1" />
-                            <path d="m4.9 4.9.7.7" />
-                            <path d="m18.4 4.9-.7.7" />
-                            <path d="M12 22v-5" />
-                        </svg>
+                    <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-cta transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        <img
+                            src="/images/veepeee logo.png"
+                            alt="Veepee Impex Logo"
+                            className="w-14 h-14 object-contain"
+                        />
                     </div>
                     <div className="flex flex-col">
                         <span className="text-xl font-bold tracking-tight text-text-primary leading-none group-hover:text-brand-primary transition-colors">
@@ -76,19 +74,29 @@ export default function Header() {
                 {/* Desktop Actions */}
                 <div className="hidden md:flex items-center gap-4">
                     <a
-                        href="tel:7828832346"
-                        className="px-6 py-2.5 rounded-full border border-gray-200 text-sm font-bold text-text-primary hover:border-brand-primary hover:text-brand-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 group bg-white"
+                        href="https://wa.me/917828832346"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Chat on WhatsApp"
+                        className="w-11 h-11 rounded-full border border-gray-200 text-[#25D366] hover:border-[#25D366] hover:bg-[#25D366] hover:text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center group bg-white"
                     >
-                        <svg className="group-hover:animate-bounce" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12.04 2C6.52 2 2.04 6.48 2.04 12c0 1.77.46 3.43 1.26 4.88L2 22l5.27-1.28A9.96 9.96 0 0 0 12.04 22c5.52 0 10-4.48 10-10S17.56 2 12.04 2Zm0 18.18c-1.53 0-3.03-.4-4.35-1.16l-.31-.18-3.13.76.84-3.05-.2-.32A8.11 8.11 0 1 1 12.04 20.18Zm4.45-6.08c-.24-.12-1.4-.69-1.62-.76-.22-.08-.38-.12-.54.12-.16.24-.62.76-.76.92-.14.16-.28.18-.52.06a6.63 6.63 0 0 1-1.95-1.2 7.32 7.32 0 0 1-1.35-1.68c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28Z" />
                         </svg>
-                        Call Us
                     </a>
                     <Link
-                        href="/contact"
-                        className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white text-sm font-bold hover:shadow-[0_8px_25px_rgba(22,163,74,0.4)] hover:-translate-y-0.5 transition-all duration-300 overflow-hidden group shadow-cta"
+                        href="#"
+                        className="relative px-7 py-3 rounded-full bg-gradient-to-b from-[#ffa43c] via-[#f5821f] to-[#e96a10] border border-[#ffbf7f] text-white text-[15px] font-extrabold tracking-tight hover:-translate-y-0.5 transition-all duration-300 overflow-hidden group shadow-[0_10px_26px_rgba(233,106,16,0.35),inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-2px_0_rgba(186,78,9,0.45)]"
                     >
-                        <span className="relative z-10">Get Best Deals</span>
+                        <span className="relative z-10 flex items-center gap-3">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M3 2.5v19l9.2-9.5L3 2.5z" fill="#00D4FF" />
+                                <path d="M12.2 12L3 2.5l13.2 7.2-4 2.3z" fill="#00A94F" />
+                                <path d="M3 21.5l9.2-9.5 4 2.3L3 21.5z" fill="#FFAA00" />
+                                <path d="M16.2 9.7l4.8 2.6c.7.4.7 1.4 0 1.8l-4.8 2.7L12.2 12l4-2.3z" fill="#FF3B30" />
+                            </svg>
+                            Get Veepee App
+                        </span>
                         <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-[-20deg]"></div>
                     </Link>
                 </div>
