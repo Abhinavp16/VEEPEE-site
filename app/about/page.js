@@ -138,7 +138,7 @@ export default function AboutPage() {
                     </ScrollReveal>
 
                     <ScrollReveal className="relative">
-                        <div className="grid grid-cols-2 gap-4 min-h-[760px]">
+                        <div className="grid grid-cols-2 gap-4 min-h-[620px]">
                             <div className="space-y-4">
                                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                                     <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Pan India Reach</p>
@@ -153,26 +153,11 @@ export default function AboutPage() {
                                     <p className="text-3xl font-bold italic mb-1">Since 2023</p>
                                     <p className="text-xs uppercase tracking-tighter opacity-80">Trusted Partnership Firm</p>
                                 </div>
-                                <img
-                                    src="/images/about/office.png"
-                                    className="rounded-2xl shadow-lg w-full h-[220px] object-cover"
-                                    alt="Power tools setup"
-                                />
                             </div>
                             <div className="space-y-4">
                                 <div className="bg-gray-900 p-8 rounded-2xl text-white text-center">
                                     <p className="text-4xl font-bold mb-2">4.9+</p>
                                     <p className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">Industry Rating</p>
-                                </div>
-                                <div className="relative rounded-2xl overflow-hidden shadow-lg">
-                                    <img
-                                        src="/images/Banner/1.jpg"
-                                        className="w-full h-[160px] object-cover"
-                                        alt="Retail and wholesale operations"
-                                    />
-                                    <div className="absolute inset-0 bg-black/40 flex items-end p-4">
-                                        <p className="text-white text-xs font-semibold uppercase tracking-[0.12em]">Retail + Wholesale Operations</p>
-                                    </div>
                                 </div>
                                 <img
                                     src="/images/about/godown.png"

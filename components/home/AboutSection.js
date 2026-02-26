@@ -36,16 +36,20 @@ export default function AboutSection() {
                 </ScrollReveal>
 
                 <ScrollReveal className="relative">
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-4 pt-12">
+                    <div className="grid grid-cols-2 gap-4 min-h-[620px]">
+                        <div className="space-y-4">
+                            <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                                <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Pan India Reach</p>
+                                <p className="text-sm font-semibold text-text-primary">Trusted supply network for retail and wholesale demand.</p>
+                            </div>
                             <img
-                                src="https://images.unsplash.com/photo-1755943421697-a9948e8c6234?w=400&h=600&fit=crop&q=80"
-                                className="rounded-2xl shadow-lg w-full h-[300px] object-cover"
-                                alt="Industrial Tools"
+                                src="/images/about/front.png"
+                                className="rounded-2xl shadow-lg w-full h-[260px] object-cover"
+                                alt="Veepee Impex storefront"
                             />
                             <div className="bg-brand-primary p-6 rounded-2xl text-white">
-                                <p className="text-3xl font-bold italic mb-1">Pan India</p>
-                                <p className="text-xs uppercase tracking-tighter opacity-80">Supply Chain Strength</p>
+                                <p className="text-3xl font-bold italic mb-1">Since 2023</p>
+                                <p className="text-xs uppercase tracking-tighter opacity-80">Trusted Partnership Firm</p>
                             </div>
                         </div>
                         <div className="space-y-4">
@@ -54,10 +58,14 @@ export default function AboutSection() {
                                 <p className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">Industry Rating</p>
                             </div>
                             <img
-                                src="https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?w=400&h=600&fit=crop&q=80"
-                                className="rounded-2xl shadow-lg w-full h-[350px] object-cover"
+                                src="/images/about/godown.png"
+                                className="rounded-2xl shadow-lg w-full h-[300px] object-cover"
                                 alt="Warehouse"
                             />
+                            <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                                <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Core Team</p>
+                                <p className="text-sm font-semibold text-text-primary">Built by experienced partners focused on quality and service.</p>
+                            </div>
                         </div>
                     </div>
                     <div className="absolute -z-10 -bottom-10 -right-10 w-48 h-48 bg-brand-light rounded-full blur-3xl" />

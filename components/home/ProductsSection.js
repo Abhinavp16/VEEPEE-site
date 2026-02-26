@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
+import InquiryPopupButton from '@/components/InquiryPopupButton';
 
 const products = [
     {
@@ -97,14 +98,17 @@ export default function ProductsSection() {
                                 </ul>
                                 <div className="flex items-center justify-between gap-3 mt-auto pt-3 border-t border-gray-50">
                                     <span className="text-xs font-bold text-brand-primary">{product.price}</span>
-                                    <Link
-                                        href="/contact"
+                                    <InquiryPopupButton
+                                        productName={product.name}
+                                        price={product.price}
+                                        details={product.specs}
+                                        ariaLabel={`Inquire about ${product.name}`}
                                         className="p-2.5 bg-brand-light/50 text-brand-primary rounded-xl hover:bg-brand-primary hover:text-white transition-all duration-300 hover:rotate-12 hover:scale-110 shadow-sm"
                                     >
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                         </svg>
-                                    </Link>
+                                    </InquiryPopupButton>
                                 </div>
                             </div>
                         </ScrollReveal>

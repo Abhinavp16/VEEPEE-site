@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
+import InquiryPopupButton from '@/components/InquiryPopupButton';
 
 const popularProducts = [
     {
@@ -31,7 +32,7 @@ const popularProducts = [
     {
         name: 'Oxon 3-Inch Petrol Water Pump',
         price: 'Request Quote',
-        image: 'https://5.imimg.com/data5/SELLER/Default/2021/8/YY/IV/QJ/29082/wp-30-petrol-water-pump-500x500.jpg',
+        image: 'https://www.alibaba.com/product-detail/WP30-3-Inch-Gasoline-Water-Pump_60562637688.html',
         badge: 'Best Value',
         specs: ['3-Inch Discharge', 'Petrol Engine'],
     },
@@ -78,15 +79,17 @@ export default function PopularProducts() {
                                 </ul>
                                 <div className="flex items-center justify-between gap-3 mt-auto pt-3 border-t border-gray-200/50">
                                     <span className="text-sm font-bold text-brand-primary">{product.price}</span>
-                                    <Link
-                                        href="/contact"
+                                    <InquiryPopupButton
+                                        productName={product.name}
+                                        price={product.price}
+                                        details={product.specs}
                                         className="flex items-center gap-1 px-3 py-1.5 bg-brand-primary text-white text-[10px] font-bold rounded-lg hover:bg-brand-dark transition-all shadow-lg shadow-brand-primary/20"
                                     >
                                         Inquire
                                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                         </svg>
-                                    </Link>
+                                    </InquiryPopupButton>
                                 </div>
                             </div>
                         </ScrollReveal>
