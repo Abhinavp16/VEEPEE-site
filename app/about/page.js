@@ -145,7 +145,7 @@ export default function AboutPage() {
                                     <p className="text-sm font-semibold text-text-primary">Trusted supply network for retail and wholesale demand.</p>
                                 </div>
                                 <img
-                                    src="https://images.unsplash.com/photo-1755943421697-a9948e8c6234?w=400&h=600&fit=crop&q=80"
+                                    src="/images/about/front.png"
                                     className="rounded-2xl shadow-lg w-full h-[260px] object-cover"
                                     alt="Industrial Tools"
                                 />
@@ -154,7 +154,7 @@ export default function AboutPage() {
                                     <p className="text-xs uppercase tracking-tighter opacity-80">Trusted Partnership Firm</p>
                                 </div>
                                 <img
-                                    src="/images/Banner/3.jpg"
+                                    src="/images/about/office.png"
                                     className="rounded-2xl shadow-lg w-full h-[220px] object-cover"
                                     alt="Power tools setup"
                                 />
@@ -166,7 +166,7 @@ export default function AboutPage() {
                                 </div>
                                 <div className="relative rounded-2xl overflow-hidden shadow-lg">
                                     <img
-                                        src="/images/Banner/4.jpg"
+                                        src="/images/Banner/1.jpg"
                                         className="w-full h-[160px] object-cover"
                                         alt="Retail and wholesale operations"
                                     />
@@ -175,7 +175,7 @@ export default function AboutPage() {
                                     </div>
                                 </div>
                                 <img
-                                    src="https://images.unsplash.com/photo-1764046155497-ad7e50737ffa?w=400&h=600&fit=crop&q=80"
+                                    src="/images/about/godown.png"
                                     className="rounded-2xl shadow-lg w-full h-[300px] object-cover"
                                     alt="Warehouse"
                                 />
