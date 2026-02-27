@@ -172,7 +172,7 @@ export default function AboutPage() {
                                 <img
                                     src="/images/banner/1.jpg"
                                     className="rounded-2xl shadow-lg w-full h-[200px] object-cover"
-                                    alt="Veepee Impex storefront"
+                                    alt="Product"
                                 />
                                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                                     <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Core Team</p>
