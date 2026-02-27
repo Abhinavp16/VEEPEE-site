@@ -35,7 +35,7 @@ export default function HeroSection() {
                         <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-brand-primary/20 backdrop-blur-md rounded-full border border-brand-primary/30">
                             <span className="w-2 h-2 bg-brand-primary animate-pulse rounded-full" />
                             <span className="text-xs md:text-sm font-bold tracking-wider text-brand-primary uppercase">
-                                Premium IMPORTERS &amp; Wholesalers
+                                Premium IMPOTER &amp; MANUFACTURER
                             </span>
                         </div>
                         <h1 className="text-5xl md:text-8xl font-primary font-bold leading-[1.1] mb-6">

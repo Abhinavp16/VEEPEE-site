@@ -32,8 +32,8 @@ export default function Header() {
         >
             <nav
                 className={`flex items-center justify-between px-6 py-3 max-w-7xl mx-auto w-full transition-all duration-500 rounded-2xl ${scrolled
-                        ? 'bg-white/80 backdrop-blur-md border border-white/20 ring-1 ring-black/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] py-2.5'
-                        : 'bg-white border border-gray-100/80 ring-4 ring-gray-50/50 shadow-sm py-4'
+                    ? 'bg-white/80 backdrop-blur-md border border-white/20 ring-1 ring-black/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] py-2.5'
+                    : 'bg-white border border-gray-100/80 ring-4 ring-gray-50/50 shadow-sm py-4'
                     }`}
             >
                 {/* Logo */}
@@ -95,7 +95,7 @@ export default function Header() {
                                 <path d="M3 21.5l9.2-9.5 4 2.3L3 21.5z" fill="#FFAA00" />
                                 <path d="M16.2 9.7l4.8 2.6c.7.4.7 1.4 0 1.8l-4.8 2.7L12.2 12l4-2.3z" fill="#FF3B30" />
                             </svg>
-                            Get Veepee App
+                            Get OXON App
                         </span>
                         <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-[-20deg]"></div>
                     </Link>
