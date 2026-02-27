@@ -149,6 +149,11 @@ export default function AboutPage() {
                                     className="rounded-2xl shadow-lg w-full h-[260px] object-cover"
                                     alt="Industrial Tools"
                                 />
+                                <img
+                                    src="/images/about/office.png"
+                                    className="rounded-2xl shadow-lg w-full h-[200px] object-cover"
+                                    alt="Veepee Impex office"
+                                />
                                 <div className="bg-brand-primary p-6 rounded-2xl text-white">
                                     <p className="text-3xl font-bold italic mb-1">Since 2023</p>
                                     <p className="text-xs uppercase tracking-tighter opacity-80">Trusted Partnership Firm</p>
@@ -163,6 +168,11 @@ export default function AboutPage() {
                                     src="/images/about/godown.png"
                                     className="rounded-2xl shadow-lg w-full h-[300px] object-cover"
                                     alt="Warehouse"
+                                />
+                                <img
+                                    src="/images/banner/1.jpg"
+                                    className="rounded-2xl shadow-lg w-full h-[200px] object-cover"
+                                    alt="Veepee Impex storefront"
                                 />
                                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                                     <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Core Team</p>
