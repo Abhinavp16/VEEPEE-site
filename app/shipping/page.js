@@ -3,7 +3,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 
 export const metadata = {
     title: 'Shipping Policy - Veepee Impex',
-    description: 'Information about our shipping and delivery processes.',
+    description: 'Learn about our shipping, processing, and COD policies at Veepee Impex.',
 };
 
 export default function ShippingPage() {
@@ -11,46 +11,60 @@ export default function ShippingPage() {
         <div className="page-transition">
             <PageHero
                 title="Shipping Policy"
-                subtitle="We ensure safe and timely delivery of our heavy machinery and tools across India."
+                subtitle="We ensure safe and timely delivery of our tools and machinery across India."
                 breadcrumbItems={['Shipping Policy']}
             />
 
             <section className="py-24 px-6 max-w-4xl mx-auto">
                 <ScrollReveal>
                     <div className="max-w-none text-text-secondary leading-relaxed space-y-12">
-                        <div>
-                            <h2 className="text-3xl font-bold text-text-primary mb-4">1. Shipping Coverage</h2>
-                            <p>
-                                Veepee Impex provides shipping services across Pan India. We work with trusted logistics partners to ensure your machinery arrives safely at your doorstep or dealership.
-                            </p>
-                        </div>
+                        <div className="prose prose-invert max-w-none">
+                            <p className="text-sm text-gray-400 mb-8 italic text-center">Effective Date: March 2026</p>
 
-                        <div>
-                            <h2 className="text-3xl font-bold text-text-primary mb-4">2. Delivery Timelines</h2>
-                            <p>
-                                Standard delivery typically takes 5-10 business days depending on the location and the size of the equipment. We will provide you with a more accurate estimate at the time of order confirmation.
-                            </p>
-                        </div>
+                            <div className="mb-12">
+                                <h2 className="text-3xl font-bold text-text-primary mb-6">1. Shipping Coverage</h2>
+                                <p>
+                                    Orders are shipped across India through authorized courier and logistics partners.
+                                </p>
+                            </div>
 
-                        <div>
-                            <h2 className="text-3xl font-bold text-text-primary mb-4">3. Shipping Costs</h2>
-                            <p>
-                                Shipping costs are calculated based on the weight, dimensions of the product, and the delivery destination. Any applicable shipping charges will be clearly stated during the checkout process.
-                            </p>
-                        </div>
+                            <div className="mb-12">
+                                <h2 className="text-3xl font-bold text-text-primary mb-6">2. Processing & Delivery Time</h2>
+                                <p>
+                                    Orders are processed within 1–3 business days after payment confirmation. Typical delivery timelines range between 3–10 business days depending on location.
+                                </p>
+                            </div>
 
-                        <div>
-                            <h2 className="text-3xl font-bold text-text-primary mb-4">4. Tracking Your Order</h2>
-                            <p>
-                                Once your order is dispatched, you will receive a tracking number via email or SMS to monitor the status of your shipment.
-                            </p>
-                        </div>
+                            <div className="mb-12">
+                                <h2 className="text-3xl font-bold text-text-primary mb-6">3. Shipping Charges</h2>
+                                <p>
+                                    Shipping costs are displayed during checkout or included in product pricing. Costs are based on weight, dimensions, and destination.
+                                </p>
+                            </div>
 
-                        <div>
-                            <h2 className="text-3xl font-bold text-text-primary mb-4">5. Handling and Damage</h2>
-                            <p>
-                                We take extreme care in packaging. However, if your order arrives damaged, please report it to us within 24 hours of delivery so we can assist with a resolution.
-                            </p>
+                            <div className="mb-12">
+                                <h2 className="text-3xl font-bold text-text-primary mb-6">4. Cash on Delivery (COD) Policy</h2>
+                                <ul className="list-disc pl-6 space-y-2">
+                                    <li>COD is available for select pin codes and order values.</li>
+                                    <li>An additional COD handling fee may apply.</li>
+                                    <li>Customers must confirm the order via phone or WhatsApp if requested.</li>
+                                    <li>Refusal of COD orders without valid reason may lead to restriction of future COD access.</li>
+                                </ul>
+                            </div>
+
+                            <div className="mb-12">
+                                <h2 className="text-3xl font-bold text-text-primary mb-6">5. Tracking & Delays</h2>
+                                <p>
+                                    Tracking details are provided via Message/email/app once dispatched. Delays may occur due to weather, transportation disruptions, public holidays, or force majeure events.
+                                </p>
+                            </div>
+
+                            <div className="mb-12">
+                                <h2 className="text-3xl font-bold text-text-primary mb-6">6. Delivery Attempts</h2>
+                                <p>
+                                    Repeated failed delivery attempts may lead to cancellation and restriction of COD access.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </ScrollReveal>
