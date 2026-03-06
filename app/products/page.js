@@ -113,13 +113,7 @@ const featuredProducts = [
     },
 ];
 
-const brandOptions = [
-    { name: 'Oxon', icon: 'bolt' },
-    { name: 'Agri Tools', icon: 'leaf' },
-    { name: 'Power Tools', icon: 'wrench' },
-    { name: 'Irrigation', icon: 'droplet' },
-    { name: 'Construction', icon: 'building' },
-];
+
 
 function buildCategoryInquiryLink(category) {
     return {
@@ -148,68 +142,35 @@ export default function ProductsPage() {
             {/* Brands Navbar */}
             <section className="px-6 pt-10">
                 <ScrollReveal className="max-w-7xl mx-auto">
-                    <div className="bg-white border border-gray-100 rounded-2xl p-3 md:p-4 shadow-sm">
-                        <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-5">
-                            <div className="px-4 py-2.5 rounded-md bg-gray-900 text-white font-bold text-sm tracking-wide uppercase">
-                                Brands
+                    <div className="bg-white border border-gray-100 rounded-2xl p-4 md:p-6 shadow-sm overflow-x-auto custom-scrollbar">
+                        <div className="flex justify-center items-center gap-8 md:gap-12 lg:gap-16 min-w-max px-2">
+                            <div className="flex items-center justify-center transition-all h-10 md:h-12 w-auto shrink-0">
+                                <img src="/images/oxon.jpeg" alt="OXON™" className="h-full object-contain" />
                             </div>
-                            <span className="text-xl font-bold text-text-secondary leading-none px-1">:</span>
-                            <div className="flex flex-wrap gap-2">
-                                {brandOptions.map((brand, i) => (
-                                    <button
-                                        key={i}
-                                        type="button"
-                                        className={`px-4 py-2.5 rounded-md text-sm font-semibold transition-all ${
-                                            i === 0
-                                                ? 'bg-brand-primary text-white shadow-sm'
-                                                : 'bg-neutral-surface text-text-secondary hover:text-brand-primary hover:bg-white border border-gray-100'
-                                        }`}
-                                    >
-                                        <span className="flex items-center gap-2">
-                                            {brand.icon === 'bolt' && (
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                    <path d="M13 2 3 14h7l-1 8 10-12h-7z" />
-                                                </svg>
-                                            )}
-                                            {brand.icon === 'store' && (
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                    <path d="M3 9h18" />
-                                                    <path d="M5 9V5h14v4" />
-                                                    <path d="M5 9v10h14V9" />
-                                                </svg>
-                                            )}
-                                            {brand.icon === 'leaf' && (
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.77 10-10 10Z" />
-                                                    <path d="M2 21c0-3 1.85-5.36 5.08-6" />
-                                                </svg>
-                                            )}
-                                            {brand.icon === 'wrench' && (
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                    <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-3 3-3-3 3-3z" />
-                                                </svg>
-                                            )}
-                                            {brand.icon === 'droplet' && (
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                    <path d="M12 2s6 6.2 6 11a6 6 0 0 1-12 0c0-4.8 6-11 6-11Z" />
-                                                </svg>
-                                            )}
-                                            {brand.icon === 'building' && (
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                    <rect x="3" y="2" width="18" height="20" rx="2" />
-                                                    <path d="M9 22v-4h6v4" />
-                                                    <path d="M8 6h.01" />
-                                                    <path d="M16 6h.01" />
-                                                    <path d="M8 10h.01" />
-                                                    <path d="M16 10h.01" />
-                                                    <path d="M8 14h.01" />
-                                                    <path d="M16 14h.01" />
-                                                </svg>
-                                            )}
-                                            {brand.name}
-                                        </span>
-                                    </button>
-                                ))}
+                            <div className="flex items-center justify-center transition-all h-10 md:h-12 w-auto shrink-0">
+                                <img src="/images/ecotech.jpeg" alt="Ecotech" className="h-full object-contain" />
+                            </div>
+                            <div className="flex items-center justify-center transition-all h-10 md:h-12 w-auto shrink-0">
+                                <img src="/images/kargill.jpeg" alt="Kargill" className="h-full object-contain" />
+                            </div>
+                            <div className="flex items-center gap-3 transition-all shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-primary">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                </svg>
+                                <span className="text-xl font-bold text-gray-700">AgriPlus</span>
+                            </div>
+                            <div className="flex items-center gap-3 transition-all shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-primary">
+                                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.77 10-10 10Z" />
+                                    <path d="M2 21c0-3 1.85-5.36 5.08-6" />
+                                </svg>
+                                <span className="text-xl font-bold text-gray-700">V-Flow</span>
+                            </div>
+                            <div className="flex items-center gap-3 transition-all shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-primary">
+                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                                </svg>
+                                <span className="text-xl font-bold text-gray-700">HeavyDuty</span>
                             </div>
                         </div>
                     </div>

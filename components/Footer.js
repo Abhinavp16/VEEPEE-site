@@ -60,11 +60,17 @@ export default function Footer() {
                         <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Follow Us</span>
                         <div className="flex gap-5">
                             {[
-                                { name: 'facebook', icon: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' },
-                                { name: 'instagram', icon: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z' },
-                                { name: 'youtube', icon: 'M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17' }
+                                { name: 'facebook', icon: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z', href: 'https://www.facebook.com/share/17bu3sXjc7/' },
+                                { name: 'instagram', icon: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z', href: 'https://www.instagram.com/veepeeimpex_oxon?igsh=MTZtenV0aW15dWdvbA%3D%3D&utm_source=qr' },
+                                { name: 'youtube', icon: 'M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17', href: 'http://www.youtube.com/@Veepee-Impex' }
                             ].map((social) => (
-                                <div key={social.name} className="w-14 h-14 rounded-full bg-white/5 border border-white/5 flex items-center justify-center hover:bg-brand-primary hover:border-brand-primary hover:text-white text-gray-400 transition-all duration-300 cursor-pointer group hover:-translate-y-1.5 shadow-lg hover:shadow-brand-primary/20">
+                                <a
+                                    key={social.name}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-14 h-14 rounded-full bg-white/5 border border-white/5 flex items-center justify-center hover:bg-brand-primary hover:border-brand-primary hover:text-white text-gray-400 transition-all duration-300 cursor-pointer group hover:-translate-y-1.5 shadow-lg hover:shadow-brand-primary/20"
+                                >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d={social.icon} />
                                         {social.name === 'instagram' && (
@@ -75,7 +81,7 @@ export default function Footer() {
                                         )}
                                         {social.name === 'youtube' && <path d="m10 15 5-3-5-3z" />}
                                     </svg>
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>

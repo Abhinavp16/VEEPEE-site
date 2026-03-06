@@ -16,7 +16,7 @@ export default function AboutSection() {
                     <div className="space-y-6">
                         <div className="flex gap-4 p-4 rounded-2xl bg-neutral-surface border border-gray-100 hover:border-brand-primary transition-colors">
                             <div className="w-12 h-12 shrink-0 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-primary font-bold">
-                                B2B
+                                D2B
                             </div>
                             <div>
                                 <h4 className="font-bold text-text-primary">Bulk Wholesaling</h4>
@@ -25,7 +25,7 @@ export default function AboutSection() {
                         </div>
                         <div className="flex gap-4 p-4 rounded-2xl bg-neutral-surface border border-gray-100 hover:border-brand-primary transition-colors">
                             <div className="w-12 h-12 shrink-0 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-primary font-bold">
-                                B2C
+                                D2C
                             </div>
                             <div>
                                 <h4 className="font-bold text-text-primary">Direct Retail</h4>
