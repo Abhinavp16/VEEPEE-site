@@ -8,7 +8,7 @@ export const metadata = {
     description: 'Browse our complete range of Oxon agricultural machinery, power tools, pumps, welding equipment, and more. Pan India distribution and best wholesale prices.',
 };
 
-const productCategories = [
+const defaultProductCategories = [
     {
         name: 'Rice Mills & Mini Rice Mills',
         description: 'High-capacity grain processing machines including Oxon 6N40 and 6W200 models.',
@@ -71,7 +71,7 @@ const productCategories = [
     },
 ];
 
-const featuredProducts = [
+const defaultFeaturedProducts = [
     {
         name: 'Oxon 67cc Petrol Chain Saw',
         price: '₹ 7,500/Piece',
@@ -113,6 +113,20 @@ const featuredProducts = [
     },
 ];
 
+const defaultCategoriesSection = {
+    eyebrow: 'Product Categories',
+    title: 'The Heart of Modern Farming',
+    description: 'Our diverse range of agriculture and industrial machines stands at the core of modern farming practices. Each piece of equipment is designed with utmost precision.',
+    buttonText: 'Inquire Now',
+};
+
+const defaultFeaturedSection = {
+    eyebrow: 'Precision Engineering',
+    title: 'Our Popular Product',
+    sideText: 'Genuine Oxon products engineered for durability, performance, and maximum ROI.',
+    buttonText: 'Get Quote',
+};
+
 
 
 function buildCategoryInquiryLink(category) {
@@ -130,7 +144,51 @@ function buildFeaturedProductInquiryLink(product) {
     };
 }
 
-export default function ProductsPage() {
+async function getWebsiteContent() {
+    const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.API_BASE_URL || 'http://localhost:5000/api/v1';
+    const apiBase = rawBase.replace(/\/+$/, '');
+
+    try {
+        const response = await fetch(`${apiBase}/settings/website-content`, {
+            cache: 'no-store',
+        });
+
+        if (!response.ok) {
+            return {
+                productCategories: defaultProductCategories,
+                featuredProducts: defaultFeaturedProducts,
+                categoriesSection: defaultCategoriesSection,
+                featuredSection: defaultFeaturedSection,
+            };
+        }
+
+        const json = await response.json();
+        const productCategories = Array.isArray(json?.data?.productCategories) && json.data.productCategories.length > 0
+            ? json.data.productCategories
+            : defaultProductCategories;
+        const featuredProducts = Array.isArray(json?.data?.featuredProducts) && json.data.featuredProducts.length > 0
+            ? json.data.featuredProducts
+            : defaultFeaturedProducts;
+        const categoriesSection = json?.data?.categoriesSection
+            ? { ...defaultCategoriesSection, ...json.data.categoriesSection }
+            : defaultCategoriesSection;
+        const featuredSection = json?.data?.featuredSection
+            ? { ...defaultFeaturedSection, ...json.data.featuredSection }
+            : defaultFeaturedSection;
+
+        return { productCategories, featuredProducts, categoriesSection, featuredSection };
+    } catch {
+        return {
+            productCategories: defaultProductCategories,
+            featuredProducts: defaultFeaturedProducts,
+            categoriesSection: defaultCategoriesSection,
+            featuredSection: defaultFeaturedSection,
+        };
+    }
+}
+
+export default async function ProductsPage() {
+    const { productCategories, featuredProducts, categoriesSection, featuredSection } = await getWebsiteContent();
     return (
         <div className="page-transition">
             <PageHero
@@ -181,13 +239,13 @@ export default function ProductsPage() {
             <section className="py-24 px-6 max-w-7xl mx-auto">
                 <ScrollReveal className="text-center mb-16">
                     <h2 className="text-sm font-bold text-brand-primary uppercase tracking-[0.3em] mb-4">
-                        Product Categories
+                        {categoriesSection.eyebrow}
                     </h2>
                     <h3 className="text-4xl md:text-5xl font-primary font-bold text-text-primary">
-                        The Heart of Modern Farming
+                        {categoriesSection.title}
                     </h3>
                     <p className="text-text-secondary mt-6 max-w-2xl mx-auto">
-                        Our diverse range of agriculture and industrial machines stands at the core of modern farming practices. Each piece of equipment is designed with utmost precision.
+                        {categoriesSection.description}
                     </p>
                     <div className="w-24 h-1.5 bg-brand-primary mx-auto mt-6 rounded-full" />
                 </ScrollReveal>
@@ -221,7 +279,7 @@ export default function ProductsPage() {
                                         {...buildCategoryInquiryLink(cat)}
                                         className="mt-6 w-full py-3 bg-neutral-surface text-text-secondary border border-gray-100 hover:bg-orange-500 hover:text-white hover:border-orange-500 rounded-2xl text-center text-sm font-bold transition-all duration-300 inline-block cursor-pointer"
                                     >
-                                        Inquire Now
+                                        {categoriesSection.buttonText || 'Inquire Now'}
                                     </InquiryPopupButton>
                                 </div>
                             </div>
@@ -235,11 +293,11 @@ export default function ProductsPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <ScrollReveal className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                         <div>
-                            <h2 className="text-sm font-bold text-brand-primary uppercase tracking-[0.3em] mb-4">Precision Engineering</h2>
-                            <h3 className="text-4xl md:text-5xl font-primary font-bold text-text-primary">Our Popular Product</h3>
+                            <h2 className="text-sm font-bold text-brand-primary uppercase tracking-[0.3em] mb-4">{featuredSection.eyebrow}</h2>
+                            <h3 className="text-4xl md:text-5xl font-primary font-bold text-text-primary">{featuredSection.title}</h3>
                         </div>
                         <p className="text-text-secondary max-w-sm">
-                            Genuine Oxon™ products engineered for durability, performance, and maximum ROI.
+                            {featuredSection.sideText}
                         </p>
                     </ScrollReveal>
 
@@ -275,9 +333,7 @@ export default function ProductsPage() {
                                     <InquiryPopupButton
                                         {...buildFeaturedProductInquiryLink(product)}
                                         className="w-full py-2 bg-neutral-surface text-text-secondary border border-gray-100 hover:bg-orange-500 hover:text-white hover:border-orange-500 rounded-lg text-center text-xs font-bold transition-all duration-300 inline-block leading-none cursor-pointer"
-                                    >
-                                        Get Quote
-                                    </InquiryPopupButton>
+                                    >{featuredSection.buttonText || 'Get Quote'}</InquiryPopupButton>
                                 </div>
                             </ScrollReveal>
                         ))}
@@ -320,3 +376,4 @@ export default function ProductsPage() {
         </div>
     );
 }
+
