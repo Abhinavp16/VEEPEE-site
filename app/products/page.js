@@ -117,7 +117,7 @@ const defaultCategoriesSection = {
     eyebrow: 'Product Categories',
     title: 'The Heart of Modern Farming',
     description: 'Our diverse range of agriculture and industrial machines stands at the core of modern farming practices. Each piece of equipment is designed with utmost precision.',
-    buttonText: 'Inquire Now',
+    buttonText: 'View all product',
 };
 
 const defaultFeaturedSection = {
@@ -275,12 +275,12 @@ export default async function ProductsPage() {
                                             </li>
                                         ))}
                                     </ul>
-                                    <InquiryPopupButton
-                                        {...buildCategoryInquiryLink(cat)}
-                                        className="mt-6 w-full py-3 bg-neutral-surface text-text-secondary border border-gray-100 hover:bg-orange-500 hover:text-white hover:border-orange-500 rounded-2xl text-center text-sm font-bold transition-all duration-300 inline-block cursor-pointer"
+                                    <Link
+                                        href={`/category/${encodeURIComponent(cat.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '')}`}
+                                        className="mt-6 w-full py-3 bg-brand-primary text-white shadow-cta hover:bg-text-primary hover:text-white hover:shadow-xl rounded-2xl text-center text-sm font-bold transition-all duration-300 inline-block cursor-pointer"
                                     >
-                                        {categoriesSection.buttonText || 'Inquire Now'}
-                                    </InquiryPopupButton>
+                                        {categoriesSection.buttonText || 'View all product'}
+                                    </Link>
                                 </div>
                             </div>
                         </ScrollReveal>

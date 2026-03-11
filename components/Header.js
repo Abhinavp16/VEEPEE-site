@@ -50,7 +50,7 @@ export default function Header() {
                             Veepee Impex
                         </span>
                         <span className="text-[10px] uppercase tracking-[0.2em] text-brand-primary font-bold mt-1">
-                            Pan India Distributor
+                            Pan India Importer & Manufacturer
                         </span>
                     </div>
                 </Link>
