@@ -16,8 +16,7 @@ export default function HeroSection() {
             try {
                 const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL || 'http://localhost:5000/api/v1';
                 const apiBase = rawBase.replace(/\/+$/, '');
-                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' }).catch(() => null);
-                if (!res || !res.ok) return;
+                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' });
                 const data = await res.json();
                 const cards = data?.data?.heroCards;
                 if (!Array.isArray(cards) || cards.length !== 6) return;
@@ -111,7 +110,7 @@ export default function HeroSection() {
                                         <div className="w-2 h-2 bg-brand-primary rounded-full animate-pulse shadow-[0_0_8px_#f97316]"></div>
                                         <span className="text-[10px] text-white/50 font-black uppercase tracking-[0.2em] leading-none">New Mobile App</span>
                                     </div>
-                                    <h4 className="text-white font-bold text-lg tracking-tight leading-none">Veepee Impex</h4>
+                                    <h4 className="text-white font-bold text-lg tracking-tight leading-none">OXON</h4>
                                     <p className="text-brand-primary/80 text-[11px] font-bold mt-1 tracking-wide leading-none font-secondary">Connect with us on the go</p>
                                 </div>
 
@@ -119,7 +118,7 @@ export default function HeroSection() {
                                     href={PLAY_STORE_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="Get the Veepee Impex app on Google Play"
+                                    aria-label="Get the OXON app on Google Play"
                                     className="relative z-10 bg-white text-gray-900 px-6 py-3 rounded-2xl flex items-center gap-3 border border-gray-200 hover:bg-orange-50 transition-all hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)] group/play"
                                 >
                                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="group-hover/play:scale-110 transition-transform duration-500">
