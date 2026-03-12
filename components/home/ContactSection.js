@@ -72,6 +72,7 @@ export default function ContactSection() {
                                             type="text"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="John Doe"
+                                            suppressHydrationWarning={true}
                                         />
                                     </div>
                                     <div>
@@ -80,6 +81,7 @@ export default function ContactSection() {
                                             type="tel"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="+91 ..."
+                                            suppressHydrationWarning={true}
                                         />
                                     </div>
                                 </div>

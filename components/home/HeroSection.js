@@ -16,7 +16,8 @@ export default function HeroSection() {
             try {
                 const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL || 'http://localhost:5000/api/v1';
                 const apiBase = rawBase.replace(/\/+$/, '');
-                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' });
+                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' }).catch(() => null);
+                if (!res || !res.ok) return;
                 const data = await res.json();
                 const cards = data?.data?.heroCards;
                 if (!Array.isArray(cards) || cards.length !== 6) return;
@@ -48,7 +49,7 @@ export default function HeroSection() {
             <div className="relative w-full h-[650px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
                 {heroImages.map((image, index) => (
                     <div
-                        key={image}
+                        key={`${image}-${index}`}
                         className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 group-hover:scale-110 ${activeImageIndex === index ? 'opacity-100' : 'opacity-0'}`}
                         style={{
                             backgroundImage: `url('${image}')`,
