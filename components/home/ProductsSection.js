@@ -1,10 +1,11 @@
 "use client";
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import InquiryPopupButton from '@/components/InquiryPopupButton';
 
-const products = [
+const defaultProducts = [
     {
         name: 'Oxon 67cc Petrol Chain Saw',
         price: 'Request Quote',
@@ -20,12 +21,6 @@ const products = [
         specs: ['Combined Rice & Flour Mill', 'Capacity: 200-300 kg/hr'],
     },
     {
-        name: 'Oxon 350 Arc Welder',
-        price: 'Request Quote',
-        image: 'https://images.unsplash.com/photo-1727098730153-6408da60d89d?w=600&h=600&fit=crop&q=80',
-        specs: ['350 Amp Output', 'Industrial Grade', 'Copper Winding'],
-    },
-    {
         name: 'Oxon Earth Auger 68cc',
         price: 'Request Quote',
         image: 'https://images.unsplash.com/photo-1738964847538-54f067b996cf?w=600&h=600&fit=crop&q=80',
@@ -39,20 +34,33 @@ const products = [
         specs: ['3-Inch Discharge', '6.5 HP Engine', 'Portable Frame'],
     },
     {
-        name: 'Oxon 50L Oil Free Air Compressor',
+        name: 'Oxon 350 Arc Welder',
         price: 'Request Quote',
-        image: 'https://images.pexels.com/photos/31257317/pexels-photo-31257317.jpeg?w=600&h=600&fit=crop',
-        specs: ['50L Tank Capacity', 'Oil Free Operation', 'Silent Motor'],
-    },
-    {
-        name: 'Oxon 2HP Induction Motor',
-        price: 'Request Quote',
-        image: 'https://images.unsplash.com/photo-1651530065437-9d961dc5e8d9?w=600&h=600&fit=crop&q=80',
-        specs: ['Single Phase', '100% Copper', 'ISI Certified'],
-    },
+        image: 'https://images.unsplash.com/photo-1727098730153-6408da60d89d?w=600&h=600&fit=crop&q=80',
+        specs: ['350 Amp Output', 'Industrial Grade', 'Copper Winding'],
+    }
 ];
 
 export default function ProductsSection() {
+    const [products, setProducts] = useState(defaultProducts);
+
+    useEffect(() => {
+        async function loadProducts() {
+            try {
+                const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL || 'http://localhost:5000/api/v1';
+                const apiBase = rawBase.replace(/\/+$/, '');
+                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' });
+                const json = await res.json();
+                if (json?.data?.featuredProducts?.length > 0) {
+                    setProducts(json.data.featuredProducts);
+                }
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        }
+        loadProducts();
+    }, []);
+
     return (
         <section id="products" className="py-24 bg-neutral-surface">
             <div className="max-w-[1440px] mx-auto px-6">
@@ -89,7 +97,7 @@ export default function ProductsSection() {
                                 </div>
                                 <h4 className="text-sm font-bold text-text-primary mb-1 line-clamp-1 group-hover:text-brand-primary transition-colors">{product.name}</h4>
                                 <ul className="text-[10px] text-gray-500 space-y-1 mb-3 flex-grow">
-                                    {product.specs.map((spec, j) => (
+                                    {product.specs && product.specs.map((spec, j) => (
                                         <li key={j} className="flex items-center gap-1.5">
                                             <div className="w-1 h-1 rounded-full bg-brand-primary/50" />
                                             {spec}
@@ -101,7 +109,7 @@ export default function ProductsSection() {
                                     <InquiryPopupButton
                                         productName={product.name}
                                         price={product.price}
-                                        details={product.specs}
+                                        details={product.specs || []}
                                         ariaLabel={`Inquire about ${product.name}`}
                                         className="p-2.5 bg-brand-light/50 text-brand-primary rounded-xl hover:bg-brand-primary hover:text-white transition-all duration-300 hover:rotate-12 hover:scale-110 shadow-sm"
                                     >

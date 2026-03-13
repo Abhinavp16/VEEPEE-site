@@ -113,7 +113,7 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-10 text-center text-[10px] text-gray-600 font-medium">
-                    <p>© {new Date().getFullYear()} Veepee Impex. All rights reserved. GST: 22AAXFV7313A1Z8</p>
+                    <p suppressHydrationWarning>© {new Date().getFullYear()} Veepee Impex. All rights reserved. GST: 22AAXFV7313A1Z8</p>
                 </div>
             </div>
         </footer>

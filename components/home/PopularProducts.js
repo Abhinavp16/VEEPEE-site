@@ -1,8 +1,11 @@
+"use client";
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import InquiryPopupButton from '@/components/InquiryPopupButton';
 
-const popularProducts = [
+const defaultPopularProducts = [
     {
         name: 'Oxon 6W200 Combined Mill',
         price: 'Request Quote',
@@ -32,13 +35,32 @@ const popularProducts = [
     {
         name: 'Oxon 3-Inch Petrol Water Pump',
         price: 'Request Quote',
-        image: 'https://www.alibaba.com/product-detail/WP30-3-Inch-Gasoline-Water-Pump_60562637688.html',
+        image: 'https://5.imimg.com/data5/ANDROID/Default/2021/6/XW/XX/XX/131018318/product-jpeg-500x500.jpg',
         badge: 'Best Value',
         specs: ['3-Inch Discharge', 'Petrol Engine'],
     },
 ];
 
 export default function PopularProducts() {
+    const [products, setProducts] = useState(defaultPopularProducts);
+
+    useEffect(() => {
+        async function loadPopular() {
+            try {
+                const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL || 'http://localhost:5000/api/v1';
+                const apiBase = rawBase.replace(/\/+$/, '');
+                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' });
+                const json = await res.json();
+                if (json?.data?.featuredProducts?.length > 0) {
+                    setProducts(json.data.featuredProducts);
+                }
+            } catch (error) {
+                console.error('Error fetching popular products:', error);
+            }
+        }
+        loadPopular();
+    }, []);
+
     return (
         <section id="popular-products" className="py-24 bg-white">
             <div className="max-w-[1600px] mx-auto px-6">
@@ -53,7 +75,7 @@ export default function PopularProducts() {
                 </div>
 
                 <div className="flex lg:grid lg:grid-cols-5 gap-6 overflow-x-auto pb-8 lg:pb-0 scrollbar-hide snap-x">
-                    {popularProducts.map((product, i) => (
+                    {products.map((product, i) => (
                         <ScrollReveal key={i} delay={i * 50} className="min-w-[280px] lg:min-w-0 snap-center">
                             <div className="group bg-neutral-surface rounded-2xl p-4 shadow-sm hover:shadow-2xl transition-all border border-gray-100 flex flex-col h-full hover:-translate-y-2 duration-300 relative overflow-hidden">
                                 <div className="aspect-square rounded-xl overflow-hidden mb-4 relative bg-gray-50">
@@ -61,6 +83,9 @@ export default function PopularProducts() {
                                         src={product.image}
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                         alt={product.name}
+                                        onError={(e) => {
+                                            e.target.src = `https://placehold.co/400x400/f3f4f6/6b7280?text=${encodeURIComponent(product.name)}`;
+                                        }}
                                     />
                                     {product.badge && (
                                         <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold shadow-sm uppercase bg-brand-primary text-white">
@@ -70,7 +95,7 @@ export default function PopularProducts() {
                                 </div>
                                 <h4 className="text-sm font-bold text-text-primary mb-2 line-clamp-1 group-hover:text-brand-primary transition-colors">{product.name}</h4>
                                 <ul className="text-[10px] text-gray-500 space-y-1 mb-4 flex-grow">
-                                    {product.specs.map((spec, j) => (
+                                    {product.specs && product.specs.map((spec, j) => (
                                         <li key={j} className="flex items-center gap-1.5">
                                             <div className="w-1 h-1 rounded-full bg-brand-primary/50" />
                                             {spec}
@@ -82,7 +107,7 @@ export default function PopularProducts() {
                                     <InquiryPopupButton
                                         productName={product.name}
                                         price={product.price}
-                                        details={product.specs}
+                                        details={product.specs || []}
                                         className="flex items-center gap-1 px-3 py-1.5 bg-brand-primary text-white text-[10px] font-bold rounded-lg hover:bg-brand-dark transition-all shadow-lg shadow-brand-primary/20"
                                     >
                                         Inquire

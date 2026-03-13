@@ -121,7 +121,7 @@ export default function HeroSection() {
                                     aria-label="Get the OXON app on Google Play"
                                     className="relative z-10 bg-white text-gray-900 px-4 lg:px-6 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl flex items-center gap-2 lg:gap-3 border border-gray-200 hover:bg-orange-50 transition-all hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)] group/play"
                                 >
-                                    <svg width="18" height="18" lg:width="22" lg:height="22" viewBox="0 0 24 24" fill="none" className="group-hover/play:scale-110 transition-transform duration-500">
+                                    <svg viewBox="0 0 24 24" fill="none" className="w-[18px] h-[18px] lg:w-[22px] lg:h-[22px] group-hover/play:scale-110 transition-transform duration-500">
                                         <path d="M3 2.5v19l9.2-9.5L3 2.5z" fill="#00D4FF" />
                                         <path d="M12.2 12L3 2.5l13.2 7.2-4 2.3z" fill="#00A94F" />
                                         <path d="M3 21.5l9.2-9.5 4 2.3L3 21.5z" fill="#FFAA00" />

@@ -70,6 +70,7 @@ export default function ContactSection() {
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Your Name</label>
                                         <input
                                             type="text"
+                                            suppressHydrationWarning
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="John Doe"
                                         />
@@ -78,6 +79,7 @@ export default function ContactSection() {
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Phone Number</label>
                                         <input
                                             type="tel"
+                                            suppressHydrationWarning
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="+91 ..."
                                         />
@@ -85,7 +87,7 @@ export default function ContactSection() {
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Category of Interest</label>
-                                    <select className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 appearance-none">
+                                    <select suppressHydrationWarning className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 appearance-none">
                                         <option>Agricultural Machinery</option>
                                         <option>Power Tools</option>
                                         <option>Water Management</option>
@@ -95,6 +97,7 @@ export default function ContactSection() {
                                 <div>
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Your Message</label>
                                     <textarea
+                                        suppressHydrationWarning
                                         className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[120px]"
                                         placeholder="Tell us what you need..."
                                     />

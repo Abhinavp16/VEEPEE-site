@@ -1,8 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 
-const categories = [
+const defaultCategories = [
     {
         name: 'Rice Mill Machinery',
         subtitle: 'Commercial & Domestic Units',
@@ -42,6 +44,32 @@ const categories = [
 ];
 
 export default function CategoriesSection() {
+    const [categories, setCategories] = useState(defaultCategories);
+
+    useEffect(() => {
+        async function loadCategories() {
+            try {
+                const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL || 'http://localhost:5000/api/v1';
+                const apiBase = rawBase.replace(/\/+$/, '');
+                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' });
+                const json = await res.json();
+                if (json?.data?.productCategories?.length > 0) {
+                    // Map API structure to local display structure if needed
+                    const mapped = json.data.productCategories.map(cat => ({
+                        name: cat.name,
+                        subtitle: cat.description || '',
+                        image: cat.image,
+                        fallback: cat.image
+                    }));
+                    setCategories(mapped);
+                }
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        }
+        loadCategories();
+    }, []);
+
     return (
         <section id="categories" className="py-24 px-6 max-w-7xl mx-auto">
             <ScrollReveal className="text-center mb-16">
@@ -52,21 +80,24 @@ export default function CategoriesSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categories.map((cat, i) => (
                     <ScrollReveal key={i} delay={i * 80}>
-                        <div className="relative h-64 rounded-3xl overflow-hidden group border border-gray-100 shadow-sm cursor-pointer">
+                        <Link 
+                            href={`/category/${encodeURIComponent(cat.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '')}`}
+                            className="relative block h-64 rounded-3xl overflow-hidden group border border-gray-100 shadow-sm cursor-pointer"
+                        >
                             <img
                                 src={cat.image}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 alt={cat.name}
                                 onError={(e) => {
                                     e.currentTarget.onerror = null;
-                                    e.currentTarget.src = cat.fallback;
+                                    e.currentTarget.src = cat.fallback || '/images/Banner/1.jpg';
                                 }}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8 text-white">
                                 <h3 className="text-2xl font-bold">{cat.name}</h3>
                                 <p className="text-xs text-brand-primary mt-2">{cat.subtitle}</p>
                             </div>
-                        </div>
+                        </Link>
                     </ScrollReveal>
                 ))}
             </div>
