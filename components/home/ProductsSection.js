@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import InquiryPopupButton from '@/components/InquiryPopupButton';
 
@@ -38,46 +34,37 @@ const defaultProducts = [
         price: 'Request Quote',
         image: 'https://images.unsplash.com/photo-1727098730153-6408da60d89d?w=600&h=600&fit=crop&q=80',
         specs: ['350 Amp Output', 'Industrial Grade', 'Copper Winding'],
-    }
+    },
 ];
 
-export default function ProductsSection() {
-    const [products, setProducts] = useState(defaultProducts);
+const defaultFeaturedSection = {
+    eyebrow: 'PRECISION ENGINEERING',
+    title: 'Our Popular Products',
+    sideText: 'Genuine Oxon products engineered for durability, performance, and maximum ROI.',
+    buttonText: 'Get Quote',
+};
 
-    useEffect(() => {
-        async function loadProducts() {
-            try {
-                const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL || 'http://localhost:5000/api/v1';
-                const apiBase = rawBase.replace(/\/+$/, '');
-                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' });
-                const json = await res.json();
-                if (json?.data?.featuredProducts?.length > 0) {
-                    setProducts(json.data.featuredProducts);
-                }
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
-        }
-        loadProducts();
-    }, []);
-
+export default function ProductsSection({
+    products = defaultProducts,
+    section = defaultFeaturedSection,
+}) {
     return (
         <section id="products" className="py-24 bg-neutral-surface">
             <div className="max-w-[1440px] mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <ScrollReveal>
-                        <h2 className="text-sm font-bold text-brand-primary uppercase tracking-[0.3em] mb-4">Precision Engineering</h2>
-                        <h3 className="text-3xl md:text-4xl font-primary font-bold text-text-primary">Our Popular Products</h3>
+                        <h2 className="text-sm font-bold text-brand-primary uppercase tracking-[0.3em] mb-4">{section.eyebrow}</h2>
+                        <h3 className="text-3xl md:text-4xl font-primary font-bold text-text-primary">{section.title}</h3>
                     </ScrollReveal>
                     <ScrollReveal>
                         <p className="text-text-secondary text-sm max-w-sm">
-                            Genuine Oxon™ products engineered for durability, performance, and maximum ROI.
+                            {section.sideText}
                         </p>
                     </ScrollReveal>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                    {products.slice(0, 5).map((product, i) => (
+                    {products.map((product, i) => (
                         <ScrollReveal key={i} delay={i * 50}>
                             <div className="group bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col h-full hover:scale-[1.02] duration-300">
                                 <div className="aspect-square rounded-2xl overflow-hidden mb-4 relative bg-neutral-background">
@@ -85,9 +72,6 @@ export default function ProductsSection() {
                                         src={product.image}
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                         alt={product.name}
-                                        onError={(e) => {
-                                            e.target.src = `https://placehold.co/600x600/f3f4f6/6b7280?text=${encodeURIComponent(product.name)}`;
-                                        }}
                                     />
                                     {product.badge && (
                                         <div className="absolute top-3 left-3 px-2 py-1 rounded-md text-[9px] font-bold shadow-sm uppercase bg-white/95 backdrop-blur text-brand-primary border border-brand-primary/10">
@@ -97,7 +81,7 @@ export default function ProductsSection() {
                                 </div>
                                 <h4 className="text-sm font-bold text-text-primary mb-1 line-clamp-1 group-hover:text-brand-primary transition-colors">{product.name}</h4>
                                 <ul className="text-[10px] text-gray-500 space-y-1 mb-3 flex-grow">
-                                    {product.specs && product.specs.map((spec, j) => (
+                                    {(product.specs || []).map((spec, j) => (
                                         <li key={j} className="flex items-center gap-1.5">
                                             <div className="w-1 h-1 rounded-full bg-brand-primary/50" />
                                             {spec}

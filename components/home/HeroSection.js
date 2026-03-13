@@ -3,37 +3,12 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 
-export default function HeroSection() {
+const defaultHeroImages = ['/images/Banner/1.jpg', '/images/Banner/2.jpg', '/images/Banner/3.jpg', '/images/Banner/4.jpg', '/images/Banner/5.jpg'];
+
+export default function HeroSection({ heroImages: initialHeroImages = defaultHeroImages }) {
     const PLAY_STORE_URL = '#';
-    const defaultHeroImages = ['/images/Banner/1.jpg', '/images/Banner/2.jpg', '/images/Banner/3.jpg', '/images/Banner/4.jpg', '/images/Banner/5.jpg', '/images/Banner/1.jpg'];
-    const [heroImages, setHeroImages] = useState(defaultHeroImages);
+    const [heroImages] = useState(initialHeroImages.length > 0 ? initialHeroImages : defaultHeroImages);
     const [activeImageIndex, setActiveImageIndex] = useState(0);
-
-    useEffect(() => {
-        let isMounted = true;
-
-        async function loadHeroImages() {
-            try {
-                const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL || 'http://localhost:5000/api/v1';
-                const apiBase = rawBase.replace(/\/+$/, '');
-                const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' });
-                const data = await res.json();
-                const cards = data?.data?.heroCards;
-                if (!Array.isArray(cards) || cards.length !== 6) return;
-                const images = cards.map((card, index) => card?.image || defaultHeroImages[index]).filter(Boolean);
-                if (isMounted && images.length === 6) {
-                    setHeroImages(images);
-                }
-            } catch {
-                // Keep fallback images
-            }
-        }
-
-        loadHeroImages();
-        return () => {
-            isMounted = false;
-        };
-    }, []);
 
     useEffect(() => {
         const intervalId = setInterval(() => {

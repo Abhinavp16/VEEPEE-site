@@ -8,16 +8,27 @@ import StatsSection from '@/components/home/StatsSection';
 import SustainabilitySection from '@/components/home/SustainabilitySection';
 import BlogSection from '@/components/home/BlogSection';
 import ContactSection from '@/components/home/ContactSection';
+import { getWebsiteContent } from '@/lib/website-content';
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const {
+    heroImages,
+    featuredProducts,
+    productCategories,
+    featuredSection,
+    categoriesSection,
+  } = await getWebsiteContent();
+
   return (
     <>
-      <HeroSection />
+      <HeroSection heroImages={heroImages} />
       <BrandsSection />
       <BannersSection />
       <AboutSection />
-      <ProductsSection />
-      <CategoriesSection />
+      <ProductsSection products={featuredProducts} section={featuredSection} />
+      <CategoriesSection categories={productCategories} section={categoriesSection} />
       <StatsSection />
       <SustainabilitySection />
       <BlogSection />
