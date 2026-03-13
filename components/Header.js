@@ -138,16 +138,34 @@ export default function Header() {
                             {link.label}
                         </Link>
                     ))}
+                    {/* Mobile App CTA */}
+                    <div className="mt-2">
+                        <Link
+                            href="#"
+                            className="relative flex items-center justify-center gap-3 px-7 py-3.5 rounded-xl bg-gradient-to-b from-[#ffa43c] via-[#f5821f] to-[#e96a10] border border-[#ffbf7f] text-white text-base font-extrabold tracking-tight shadow-[0_10px_26px_rgba(233,106,16,0.3)] overflow-hidden active:scale-[0.98] transition-all"
+                        >
+                            <span className="relative z-10 flex items-center gap-3">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M3 2.5v19l9.2-9.5L3 2.5z" fill="#00D4FF" />
+                                    <path d="M12.2 12L3 2.5l13.2 7.2-4 2.3z" fill="#00A94F" />
+                                    <path d="M3 21.5l9.2-9.5 4 2.3L3 21.5z" fill="#FFAA00" />
+                                    <path d="M16.2 9.7l4.8 2.6c.7.4.7 1.4 0 1.8l-4.8 2.7L12.2 12l4-2.3z" fill="#FF3B30" />
+                                </svg>
+                                Get OXON App
+                            </span>
+                        </Link>
+                    </div>
+
                     <div className="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-gray-100">
                         <a
                             href="tel:7828832346"
-                            className="py-3.5 rounded-xl border border-gray-200 text-center font-bold text-text-primary text-sm hover:bg-gray-50"
+                            className="py-3.5 rounded-xl border border-gray-200 text-center font-bold text-text-primary text-sm active:bg-gray-50"
                         >
                             Call Support
                         </a>
                         <Link
                             href="/contact"
-                            className="py-3.5 rounded-xl bg-brand-primary text-white text-center font-bold text-sm shadow-cta"
+                            className="py-3.5 rounded-xl bg-brand-primary text-white text-center font-bold text-sm shadow-cta active:scale-[0.98]"
                         >
                             Inquiry Now
                         </Link>

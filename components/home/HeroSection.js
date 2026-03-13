@@ -96,22 +96,22 @@ export default function HeroSection() {
                     </ScrollReveal>
 
                     {/* Realistic Floating App CTA */}
-                    <div className="absolute bottom-10 right-10 hidden lg:block animate-fade-in-up">
+                    <div className="absolute bottom-6 left-4 right-4 lg:bottom-10 lg:right-10 lg:left-auto lg:right-10 block animate-fade-in-up z-20">
                         <div className="group relative">
                             {/* Ambient Glow */}
                             <div className="absolute -inset-4 bg-brand-primary/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
-                            <div className="relative backdrop-blur-xl bg-white/5 border border-white/10 p-4 pl-6 rounded-3xl flex items-center gap-8 shadow-2xl overflow-hidden transition-all duration-500 hover:translate-y-[-5px] hover:bg-white/10">
+                            <div className="relative backdrop-blur-xl bg-white/10 lg:bg-white/5 border border-white/20 lg:border-white/10 p-3 lg:p-4 pl-4 lg:pl-6 rounded-2xl lg:rounded-3xl flex items-center justify-between lg:justify-start gap-3 lg:gap-8 shadow-2xl overflow-hidden transition-all duration-500 hover:translate-y-[-5px] hover:bg-white/10">
                                 {/* Lens Flare Effect */}
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rotate-45 translate-x-16 -translate-y-16 group-hover:translate-x-12 transition-transform duration-1000"></div>
 
                                 <div className="flex flex-col relative z-10">
-                                    <div className="flex items-center gap-2 mb-1.5">
-                                        <div className="w-2 h-2 bg-brand-primary rounded-full animate-pulse shadow-[0_0_8px_#f97316]"></div>
-                                        <span className="text-[10px] text-white/50 font-black uppercase tracking-[0.2em] leading-none">New Mobile App</span>
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <div className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-pulse shadow-[0_0_8px_#f97316]"></div>
+                                        <span className="text-[9px] lg:text-[10px] text-white/70 lg:text-white/50 font-black uppercase tracking-[0.2em] leading-none">New Mobile App</span>
                                     </div>
-                                    <h4 className="text-white font-bold text-lg tracking-tight leading-none">OXON</h4>
-                                    <p className="text-brand-primary/80 text-[11px] font-bold mt-1 tracking-wide leading-none font-secondary">Connect with us on the go</p>
+                                    <h4 className="text-white font-bold text-base lg:text-lg tracking-tight leading-none">OXON</h4>
+                                    <p className="text-brand-primary/90 lg:text-brand-primary/80 text-[10px] lg:text-[11px] font-bold mt-1 tracking-wide leading-none font-secondary">Connect with us on the go</p>
                                 </div>
 
                                 <a
@@ -119,17 +119,17 @@ export default function HeroSection() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Get the OXON app on Google Play"
-                                    className="relative z-10 bg-white text-gray-900 px-6 py-3 rounded-2xl flex items-center gap-3 border border-gray-200 hover:bg-orange-50 transition-all hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)] group/play"
+                                    className="relative z-10 bg-white text-gray-900 px-4 lg:px-6 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl flex items-center gap-2 lg:gap-3 border border-gray-200 hover:bg-orange-50 transition-all hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)] group/play"
                                 >
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="group-hover/play:scale-110 transition-transform duration-500">
+                                    <svg width="18" height="18" lg:width="22" lg:height="22" viewBox="0 0 24 24" fill="none" className="group-hover/play:scale-110 transition-transform duration-500">
                                         <path d="M3 2.5v19l9.2-9.5L3 2.5z" fill="#00D4FF" />
                                         <path d="M12.2 12L3 2.5l13.2 7.2-4 2.3z" fill="#00A94F" />
                                         <path d="M3 21.5l9.2-9.5 4 2.3L3 21.5z" fill="#FFAA00" />
                                         <path d="M16.2 9.7l4.8 2.6c.7.4.7 1.4 0 1.8l-4.8 2.7L12.2 12l4-2.3z" fill="#FF3B30" />
                                     </svg>
                                     <div className="flex flex-col items-start leading-none">
-                                        <span className="text-[10px] text-gray-500 font-bold uppercase tracking-tight">Get it on</span>
-                                        <span className="text-sm font-black tracking-tight">Google Play</span>
+                                        <span className="text-[9px] lg:text-[10px] text-gray-500 font-bold uppercase tracking-tight">Get it on</span>
+                                        <span className="text-xs lg:text-sm font-black tracking-tight">Google Play</span>
                                     </div>
                                 </a>
                             </div>
