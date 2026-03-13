@@ -117,7 +117,7 @@ const defaultCategoriesSection = {
     eyebrow: 'Product Categories',
     title: 'The Heart of Modern Farming',
     description: 'Our diverse range of agriculture and industrial machines stands at the core of modern farming practices. Each piece of equipment is designed with utmost precision.',
-    buttonText: 'View all product',
+    buttonText: 'View All products',
 };
 
 const defaultFeaturedSection = {
@@ -127,13 +127,54 @@ const defaultFeaturedSection = {
     buttonText: 'Get Quote',
 };
 
+const categoryCardFallbackImage = 'https://placehold.co/800x500/e5e7eb/94a3b8?text=Category';
 
+function slugifyCategoryName(name = '') {
+    return encodeURIComponent(String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '');
+}
 
-function buildCategoryInquiryLink(category) {
+function normalizeCategoryProduct(product, index) {
+    if (typeof product === 'string') {
+        return {
+            name: product.trim(),
+            shortDescription: '',
+            description: '',
+            image: '',
+            images: [],
+            slug: '',
+            productId: '',
+            order: index,
+        };
+    }
+
+    const images = Array.isArray(product?.images)
+        ? product.images.map((image) => String(image || '').trim()).filter(Boolean)
+        : [];
+
     return {
-        productName: category.name,
-        details: category.products,
+        name: String(product?.name || '').trim(),
+        shortDescription: String(product?.shortDescription || '').trim(),
+        description: String(product?.description || '').trim(),
+        image: String(product?.image || images[0] || '').trim(),
+        images,
+        slug: String(product?.slug || '').trim(),
+        productId: String(product?.productId || '').trim(),
+        order: Number.isFinite(product?.order) ? product.order : index,
     };
+}
+
+function getCategoryProducts(category) {
+    const productDetails = Array.isArray(category?.productDetails)
+        ? category.productDetails.map((product, index) => normalizeCategoryProduct(product, index)).filter((product) => product.name)
+        : [];
+
+    if (productDetails.length > 0) {
+        return productDetails.sort((a, b) => (a.order || 0) - (b.order || 0));
+    }
+
+    return Array.isArray(category?.products)
+        ? category.products.map((product, index) => normalizeCategoryProduct(product, index)).filter((product) => product.name)
+        : [];
 }
 
 function buildFeaturedProductInquiryLink(product) {
@@ -145,7 +186,11 @@ function buildFeaturedProductInquiryLink(product) {
 }
 
 async function getWebsiteContent() {
-    const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.API_BASE_URL || 'http://localhost:5000/api/v1';
+    const rawBase =
+        process.env.NEXT_PUBLIC_API_BASE_URL ||
+        process.env.API_BASE_URL ||
+        process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL ||
+        'https://veepee-impex.vercel.app/api/v1';
     const apiBase = rawBase.replace(/\/+$/, '');
 
     try {
@@ -251,40 +296,43 @@ export default async function ProductsPage() {
                 </ScrollReveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {productCategories.map((cat, i) => (
-                        <ScrollReveal key={i} delay={i * 80}>
-                            <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full flex flex-col">
-                                <div className="h-48 overflow-hidden relative">
-                                    <img
-                                        src={cat.image}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        alt={cat.name}
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                                    <h4 className="absolute bottom-4 left-4 right-4 text-white font-bold text-lg">{cat.name}</h4>
+                    {productCategories.map((cat, i) => {
+                        const categoryProducts = getCategoryProducts(cat);
+                        return (
+                            <ScrollReveal key={i} delay={i * 80}>
+                                <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full flex flex-col">
+                                    <div className="h-48 overflow-hidden relative">
+                                        <img
+                                            src={cat.image || categoryCardFallbackImage}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                            alt={cat.name}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                                        <h4 className="absolute bottom-4 left-4 right-4 text-white font-bold text-lg">{cat.name}</h4>
+                                    </div>
+                                    <div className="p-6 flex-grow flex flex-col">
+                                        <p className="text-sm text-text-secondary mb-4 flex-grow">{cat.description}</p>
+                                        <ul className="space-y-1">
+                                            {categoryProducts.map((product, j) => (
+                                                <li key={j} className="flex items-center gap-2 text-xs text-text-secondary font-medium">
+                                                    <svg className="w-3 h-3 text-brand-primary shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                                                    </svg>
+                                                    {product.name}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <Link
+                                            href={`/category/${slugifyCategoryName(cat.name)}`}
+                                            className="mt-6 w-full py-3 bg-brand-primary text-white shadow-cta hover:bg-text-primary hover:text-white hover:shadow-xl rounded-2xl text-center text-sm font-bold transition-all duration-300 inline-block cursor-pointer"
+                                        >
+                                        {categoriesSection.buttonText || 'View All products'}
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div className="p-6 flex-grow flex flex-col">
-                                    <p className="text-sm text-text-secondary mb-4 flex-grow">{cat.description}</p>
-                                    <ul className="space-y-1">
-                                        {cat.products.map((p, j) => (
-                                            <li key={j} className="flex items-center gap-2 text-xs text-text-secondary font-medium">
-                                                <svg className="w-3 h-3 text-brand-primary shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                                                </svg>
-                                                {p}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Link
-                                        href={`/category/${encodeURIComponent(cat.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '')}`}
-                                        className="mt-6 w-full py-3 bg-brand-primary text-white shadow-cta hover:bg-text-primary hover:text-white hover:shadow-xl rounded-2xl text-center text-sm font-bold transition-all duration-300 inline-block cursor-pointer"
-                                    >
-                                        {categoriesSection.buttonText || 'View all product'}
-                                    </Link>
-                                </div>
-                            </div>
-                        </ScrollReveal>
-                    ))}
+                            </ScrollReveal>
+                        );
+                    })}
                 </div>
             </section>
 

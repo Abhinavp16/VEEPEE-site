@@ -3,6 +3,96 @@ import PageHero from '@/components/PageHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import InquiryPopupButton from '@/components/InquiryPopupButton';
 
+const productCardFallbackImage = 'https://placehold.co/800x520/f3f4f6/94a3b8?text=Product';
+
+function slugifyCategoryName(name = '') {
+    return encodeURIComponent(String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '');
+}
+
+function normalizeCategoryProduct(product, index) {
+    if (typeof product === 'string') {
+        return {
+            name: product.trim(),
+            shortDescription: '',
+            description: '',
+            image: '',
+            images: [],
+            slug: '',
+            productId: '',
+            sku: '',
+            stock: 0,
+            retailPrice: 0,
+            wholesalePrice: 0,
+            mrp: 0,
+            order: index,
+        };
+    }
+
+    const images = Array.isArray(product?.images)
+        ? product.images.map((image) => String(image || '').trim()).filter(Boolean)
+        : [];
+
+    return {
+        name: String(product?.name || '').trim(),
+        shortDescription: String(product?.shortDescription || '').trim(),
+        description: String(product?.description || '').trim(),
+        image: String(product?.image || images[0] || '').trim(),
+        images,
+        slug: String(product?.slug || '').trim(),
+        productId: String(product?.productId || '').trim(),
+        sku: String(product?.sku || '').trim(),
+        stock: Number(product?.stock) || 0,
+        retailPrice: Number(product?.retailPrice) || 0,
+        wholesalePrice: Number(product?.wholesalePrice) || 0,
+        mrp: Number(product?.mrp) || 0,
+        order: Number.isFinite(product?.order) ? product.order : index,
+    };
+}
+
+function getCategoryProducts(category) {
+    const productDetails = Array.isArray(category?.productDetails)
+        ? category.productDetails.map((product, index) => normalizeCategoryProduct(product, index)).filter((product) => product.name)
+        : [];
+
+    if (productDetails.length > 0) {
+        return productDetails.sort((a, b) => (a.order || 0) - (b.order || 0));
+    }
+
+    return Array.isArray(category?.products)
+        ? category.products.map((product, index) => normalizeCategoryProduct(product, index)).filter((product) => product.name)
+        : [];
+}
+
+function formatPrice(value) {
+    if (!Number.isFinite(value) || value <= 0) {
+        return '';
+    }
+
+    return new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        maximumFractionDigits: 0,
+    }).format(value);
+}
+
+function buildProductInquiryDetails(product) {
+    const details = [];
+
+    if (product.shortDescription) {
+        details.push(product.shortDescription);
+    } else if (product.description) {
+        details.push(product.description);
+    }
+    if (product.sku) {
+        details.push(`SKU: ${product.sku}`);
+    }
+    if (product.stock > 0) {
+        details.push(`Stock: ${product.stock}`);
+    }
+
+    return details;
+}
+
 const defaultProductCategories = [
     {
         name: 'Rice Mills & Mini Rice Mills',
@@ -67,7 +157,11 @@ const defaultProductCategories = [
 ];
 
 async function getCategories() {
-    const rawBase = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.API_BASE_URL || 'http://localhost:5000/api/v1';
+    const rawBase =
+        process.env.NEXT_PUBLIC_API_BASE_URL ||
+        process.env.API_BASE_URL ||
+        process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL ||
+        'https://veepee-impex.vercel.app/api/v1';
     const apiBase = rawBase.replace(/\/+$/, '');
 
     try {
@@ -98,7 +192,7 @@ export async function generateMetadata({ params }) {
     
     // Reverse engineer the category name from the slug as best as we can to find it
     const category = categories.find(c => 
-        encodeURIComponent(c.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '') === slug
+        slugifyCategoryName(c.name) === slug
     );
 
     return {
@@ -115,7 +209,7 @@ export default async function CategoryPage({ params }) {
     
     // Reverse engineer the category name from the slug as best as we can to find it
     const category = categories.find(c => 
-        encodeURIComponent(c.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '') === slug
+        slugifyCategoryName(c.name) === slug
     );
 
     if (!category) {
@@ -132,6 +226,8 @@ export default async function CategoryPage({ params }) {
             </div>
         );
     }
+
+    const categoryProducts = getCategoryProducts(category);
 
     return (
         <div className="page-transition">
@@ -152,29 +248,66 @@ export default async function CategoryPage({ params }) {
                 </ScrollReveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {category.products.map((productName, index) => (
-                        <ScrollReveal key={index} delay={index * 100}>
-                            <div className="bg-white rounded-[2rem] p-6 shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col h-full group">
-                                {/* Simulated Image Placeholder */}
-                                <div className="h-48 mb-6 rounded-2xl bg-gray-50 flex items-center justify-center overflow-hidden relative">
-                                    <div className="absolute inset-0 bg-brand-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    <svg className="w-16 h-16 text-gray-200 group-hover:scale-110 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
+                    {categoryProducts.map((product, index) => {
+                        const displayPrice = formatPrice(product.retailPrice || product.wholesalePrice || product.mrp);
+                        const productDescription = product.shortDescription || product.description || `Browse details and send an inquiry for ${product.name}.`;
+                        return (
+                            <ScrollReveal key={index} delay={index * 100}>
+                                <div className="bg-white rounded-[2rem] p-5 shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col h-full group">
+                                    <div className="h-52 mb-5 rounded-[1.5rem] bg-gray-50 overflow-hidden relative">
+                                        <img
+                                            src={product.image || productCardFallbackImage}
+                                            alt={product.name}
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+                                        <div className="absolute top-4 right-4">
+                                            <span className={`inline-flex items-center rounded-full px-3 py-1 text-[11px] font-bold ${product.stock > 0 ? 'bg-white/90 text-emerald-700' : 'bg-white/90 text-rose-600'}`}>
+                                                {product.stock > 0 ? 'In Stock' : 'Check Availability'}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start justify-between gap-4">
+                                        <h3 className="text-xl font-bold text-text-primary">{product.name}</h3>
+                                        {displayPrice && (
+                                            <p className="text-sm font-black text-brand-primary whitespace-nowrap">{displayPrice}</p>
+                                        )}
+                                    </div>
+                                    <p className="text-sm text-text-secondary mt-3">{productDescription}</p>
+                                    <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                                        {product.sku && (
+                                            <span className="rounded-full bg-gray-100 px-3 py-1 font-semibold text-gray-600">
+                                                SKU: {product.sku}
+                                            </span>
+                                        )}
+                                        {product.stock > 0 && (
+                                            <span className="rounded-full bg-orange-50 px-3 py-1 font-semibold text-brand-primary">
+                                                {product.stock} available
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="mt-auto pt-6">
+                                        <InquiryPopupButton
+                                            productName={product.name}
+                                            price={displayPrice}
+                                            details={buildProductInquiryDetails(product)}
+                                            className="w-full py-3 bg-brand-primary text-white rounded-xl text-center text-sm font-bold shadow-cta hover:-translate-y-0.5 transition-all duration-300 inline-block cursor-pointer"
+                                        >
+                                            Inquire About This Product
+                                        </InquiryPopupButton>
+                                    </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-text-primary mb-3">{productName}</h3>
-                                <div className="mt-auto pt-6">
-                                    <InquiryPopupButton
-                                        productName={productName}
-                                        details={[]}
-                                        className="w-full py-3 bg-brand-primary text-white rounded-xl text-center text-sm font-bold shadow-cta hover:-translate-y-0.5 transition-all duration-300 inline-block cursor-pointer"
-                                    >
-                                        Inquire About This Product
-                                    </InquiryPopupButton>
-                                </div>
-                            </div>
-                        </ScrollReveal>
-                    ))}
+                            </ScrollReveal>
+                        );
+                    })}
+                    {categoryProducts.length === 0 && (
+                        <div className="md:col-span-2 lg:col-span-3 rounded-[2rem] border border-dashed border-gray-300 bg-white/70 p-10 text-center">
+                            <h3 className="text-2xl font-primary font-bold text-text-primary">No products added yet</h3>
+                            <p className="mt-3 text-text-secondary">
+                                This category is live, but no active products are linked to it right now.
+                            </p>
+                        </div>
+                    )}
                 </div>
             </section>
         </div>
