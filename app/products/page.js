@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import ScrollReveal from '@/components/ScrollReveal';
-import InquiryPopupButton from '@/components/InquiryPopupButton';
+import FeaturedProductCard from '@/components/products/FeaturedProductCard';
+import {
+    defaultFeaturedProducts as sharedDefaultFeaturedProducts,
+    normalizeFeaturedProduct,
+} from '@/lib/featured-products';
 
 export const metadata = {
     title: 'Products - Veepee Impex',
@@ -177,14 +181,6 @@ function getCategoryProducts(category) {
         : [];
 }
 
-function buildFeaturedProductInquiryLink(product) {
-    return {
-        productName: product.name,
-        price: product.price,
-        details: product.specs,
-    };
-}
-
 async function getWebsiteContent() {
     const rawBase =
         process.env.NEXT_PUBLIC_API_BASE_URL ||
@@ -201,7 +197,7 @@ async function getWebsiteContent() {
         if (!response.ok) {
             return {
                 productCategories: defaultProductCategories,
-                featuredProducts: defaultFeaturedProducts,
+                featuredProducts: sharedDefaultFeaturedProducts.map((product, index) => normalizeFeaturedProduct(product, index)),
                 categoriesSection: defaultCategoriesSection,
                 featuredSection: defaultFeaturedSection,
             };
@@ -211,9 +207,9 @@ async function getWebsiteContent() {
         const productCategories = Array.isArray(json?.data?.productCategories) && json.data.productCategories.length > 0
             ? json.data.productCategories
             : defaultProductCategories;
-        const featuredProducts = Array.isArray(json?.data?.featuredProducts) && json.data.featuredProducts.length > 0
+        const featuredProducts = (Array.isArray(json?.data?.featuredProducts) && json.data.featuredProducts.length > 0
             ? json.data.featuredProducts
-            : defaultFeaturedProducts;
+            : sharedDefaultFeaturedProducts).map((product, index) => normalizeFeaturedProduct(product, index));
         const categoriesSection = json?.data?.categoriesSection
             ? { ...defaultCategoriesSection, ...json.data.categoriesSection }
             : defaultCategoriesSection;
@@ -225,7 +221,7 @@ async function getWebsiteContent() {
     } catch {
         return {
             productCategories: defaultProductCategories,
-            featuredProducts: defaultFeaturedProducts,
+            featuredProducts: sharedDefaultFeaturedProducts.map((product, index) => normalizeFeaturedProduct(product, index)),
             categoriesSection: defaultCategoriesSection,
             featuredSection: defaultFeaturedSection,
         };
@@ -352,39 +348,7 @@ export default async function ProductsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center">
                         {featuredProducts.map((product, i) => (
                             <ScrollReveal key={i} delay={i * 100}>
-                                <div className="group mx-auto w-full max-w-[320px] bg-white rounded-2xl p-4 shadow-sm transition-all border border-gray-100 flex flex-col h-full duration-300">
-                                    <div className="aspect-square rounded-2xl overflow-hidden mb-4 relative bg-neutral-background">
-                                        <img
-                                            src={product.image}
-                                            className="w-full h-full object-cover"
-                                            alt={product.name}
-                                        />
-                                        {product.badge && (
-                                            <div className={`absolute top-3 left-3 px-2 py-1 rounded-md text-[9px] font-bold shadow-sm uppercase ${product.badgeStyle || 'bg-white/95 backdrop-blur text-brand-primary border border-brand-primary/10'
-                                                }`}>
-                                                {product.badge}
-                                            </div>
-                                        )}
-                                    </div>
-                                    <h4 className="text-base font-bold text-text-primary mb-2 line-clamp-2 min-h-[3.25rem]">{product.name}</h4>
-                                    <ul className="text-[11px] text-gray-500 space-y-2 mb-4 min-h-[4.25rem]">
-                                        {(product.specs || []).slice(0, 2).map((spec, j) => (
-                                            <li key={j} className="flex items-start gap-2 leading-relaxed line-clamp-2">
-                                                <div className="w-1 h-1 rounded-full bg-brand-primary/50" />
-                                                {spec}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <div className="mt-auto pt-3 border-t border-gray-50">
-                                        <p className="text-lg font-extrabold text-brand-primary mb-3">{product.price}</p>
-                                        <InquiryPopupButton
-                                            {...buildFeaturedProductInquiryLink(product)}
-                                            className="block w-full py-3 bg-neutral-surface text-text-secondary border border-gray-100 rounded-xl text-center text-sm font-bold leading-none cursor-pointer"
-                                        >
-                                            {featuredSection.buttonText || 'Get Quote'}
-                                        </InquiryPopupButton>
-                                    </div>
-                                </div>
+                                <FeaturedProductCard product={product} />
                             </ScrollReveal>
                         ))}
                     </div>

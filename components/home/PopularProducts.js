@@ -3,46 +3,14 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
-import InquiryPopupButton from '@/components/InquiryPopupButton';
-
-const defaultPopularProducts = [
-    {
-        name: 'Oxon 6W200 Combined Mill',
-        price: 'Request Quote',
-        image: 'https://image.pollinations.ai/prompt/combined%20rice%20mill%20and%20flour%20mill%20machine%20heavy%20duty%20agricultural%20equipment%20photorealistic?width=400&height=400&nologo=true',
-        badge: 'Popular',
-        specs: ['Combined Rice & Flour Mill', 'Heavy Duty Motor'],
-    },
-    {
-        name: 'Oxon 52cc Side Pack Brush Cutter',
-        price: 'Request Quote',
-        image: 'https://5.imimg.com/data5/SELLER/Default/2022/9/MQ/OA/WO/4609659/backpack-brush-cutter.jpg',
-        badge: 'Hot',
-        specs: ['52cc Engine', 'Side Pack Design'],
-    },
-    {
-        name: 'Oxon 350 Arc Welding Machine',
-        price: 'Request Quote',
-        image: 'https://image.pollinations.ai/prompt/industrial%20arc%20welding%20machine%20inverter%20welder%20equipment%20photorealistic?width=400&height=400&nologo=true',
-        specs: ['350 Amp Output', 'Industrial Grade'],
-    },
-    {
-        name: 'Oxon 50L Oil Free Air Compressor',
-        price: 'Request Quote',
-        image: 'https://image.pollinations.ai/prompt/50L%20oil%20free%20air%20compressor%20industrial%20machine%20photorealistic?width=400&height=400&nologo=true',
-        specs: ['50L Tank Capacity', 'Oil Free Operation'],
-    },
-    {
-        name: 'Oxon 3-Inch Petrol Water Pump',
-        price: 'Request Quote',
-        image: 'https://5.imimg.com/data5/ANDROID/Default/2021/6/XW/XX/XX/131018318/product-jpeg-500x500.jpg',
-        badge: 'Best Value',
-        specs: ['3-Inch Discharge', 'Petrol Engine'],
-    },
-];
+import FeaturedProductCard from '@/components/products/FeaturedProductCard';
+import {
+    defaultFeaturedProducts,
+    normalizeFeaturedProduct,
+} from '@/lib/featured-products';
 
 export default function PopularProducts() {
-    const [products, setProducts] = useState(defaultPopularProducts);
+    const [products, setProducts] = useState(defaultFeaturedProducts.map((product, index) => normalizeFeaturedProduct(product, index)));
 
     useEffect(() => {
         async function loadPopular() {
@@ -52,7 +20,7 @@ export default function PopularProducts() {
                 const res = await fetch(`${apiBase}/settings/website-content`, { cache: 'no-store' });
                 const json = await res.json();
                 if (json?.data?.featuredProducts?.length > 0) {
-                    setProducts(json.data.featuredProducts);
+                    setProducts(json.data.featuredProducts.map((product, index) => normalizeFeaturedProduct(product, index)));
                 }
             } catch (error) {
                 console.error('Error fetching popular products:', error);
@@ -77,46 +45,7 @@ export default function PopularProducts() {
                 <div className="flex lg:grid lg:grid-cols-5 gap-6 overflow-x-auto pb-8 lg:pb-0 scrollbar-hide snap-x">
                     {products.map((product, i) => (
                         <ScrollReveal key={i} delay={i * 50} className="min-w-[280px] lg:min-w-0 snap-center">
-                            <div className="group bg-neutral-surface rounded-2xl p-4 shadow-sm hover:shadow-2xl transition-all border border-gray-100 flex flex-col h-full hover:-translate-y-2 duration-300 relative overflow-hidden">
-                                <div className="aspect-square rounded-xl overflow-hidden mb-4 relative bg-gray-50">
-                                    <img
-                                        src={product.image}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        alt={product.name}
-                                        onError={(e) => {
-                                            e.target.src = `https://placehold.co/400x400/f3f4f6/6b7280?text=${encodeURIComponent(product.name)}`;
-                                        }}
-                                    />
-                                    {product.badge && (
-                                        <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold shadow-sm uppercase bg-brand-primary text-white">
-                                            {product.badge}
-                                        </div>
-                                    )}
-                                </div>
-                                <h4 className="text-sm font-bold text-text-primary mb-2 line-clamp-1 group-hover:text-brand-primary transition-colors">{product.name}</h4>
-                                <ul className="text-[10px] text-gray-500 space-y-1 mb-4 flex-grow">
-                                    {product.specs && product.specs.map((spec, j) => (
-                                        <li key={j} className="flex items-center gap-1.5">
-                                            <div className="w-1 h-1 rounded-full bg-brand-primary/50" />
-                                            {spec}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="flex items-center justify-between gap-3 mt-auto pt-3 border-t border-gray-200/50">
-                                    <span className="text-sm font-bold text-brand-primary">{product.price}</span>
-                                    <InquiryPopupButton
-                                        productName={product.name}
-                                        price={product.price}
-                                        details={product.specs || []}
-                                        className="flex items-center gap-1 px-3 py-1.5 bg-brand-primary text-white text-[10px] font-bold rounded-lg hover:bg-brand-dark transition-all shadow-lg shadow-brand-primary/20"
-                                    >
-                                        Inquire
-                                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </InquiryPopupButton>
-                                </div>
-                            </div>
+                            <FeaturedProductCard product={product} />
                         </ScrollReveal>
                     ))}
                 </div>

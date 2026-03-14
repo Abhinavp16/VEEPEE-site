@@ -1,5 +1,6 @@
 import ScrollReveal from '@/components/ScrollReveal';
-import InquiryPopupButton from '@/components/InquiryPopupButton';
+import FeaturedProductCard from '@/components/products/FeaturedProductCard';
+import { normalizeFeaturedProduct } from '@/lib/featured-products';
 
 const defaultProducts = [
     {
@@ -66,43 +67,7 @@ export default function ProductsSection({
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                     {products.map((product, i) => (
                         <ScrollReveal key={i} delay={i * 50}>
-                            <div className="group mx-auto w-full max-w-[320px] bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col h-full hover:scale-[1.02] duration-300">
-                                <div className="aspect-square rounded-2xl overflow-hidden mb-4 relative bg-neutral-background">
-                                    <img
-                                        src={product.image}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        alt={product.name}
-                                    />
-                                    {product.badge && (
-                                        <div className="absolute top-3 left-3 px-2 py-1 rounded-md text-[9px] font-bold shadow-sm uppercase bg-white/95 backdrop-blur text-brand-primary border border-brand-primary/10">
-                                            {product.badge}
-                                        </div>
-                                    )}
-                                </div>
-                                <h4 className="text-base font-bold text-text-primary mb-2 line-clamp-2 min-h-[3.25rem] group-hover:text-brand-primary transition-colors">{product.name}</h4>
-                                <ul className="text-[11px] text-gray-500 space-y-2 mb-4 min-h-[4.25rem]">
-                                    {(product.specs || []).slice(0, 2).map((spec, j) => (
-                                        <li key={j} className="flex items-start gap-2 leading-relaxed line-clamp-2">
-                                            <div className="w-1 h-1 rounded-full bg-brand-primary/50" />
-                                            {spec}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="flex items-center justify-between gap-3 mt-auto pt-3 border-t border-gray-50">
-                                    <span className="text-lg font-extrabold text-brand-primary">{product.price}</span>
-                                    <InquiryPopupButton
-                                        productName={product.name}
-                                        price={product.price}
-                                        details={product.specs || []}
-                                        ariaLabel={`Inquire about ${product.name}`}
-                                        className="p-3 bg-brand-light/50 text-brand-primary rounded-xl hover:bg-brand-primary hover:text-white transition-all duration-300 hover:rotate-12 hover:scale-110 shadow-sm"
-                                    >
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </InquiryPopupButton>
-                                </div>
-                            </div>
+                            <FeaturedProductCard product={normalizeFeaturedProduct(product, i)} />
                         </ScrollReveal>
                     ))}
                 </div>
