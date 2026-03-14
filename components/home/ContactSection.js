@@ -72,7 +72,7 @@ export default function ContactSection() {
                                             type="text"
                                             suppressHydrationWarning
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
-                                            placeholder="John Doe"
+                                            placeholder="Priya Sharma"
                                         />
                                     </div>
                                     <div>
@@ -81,7 +81,7 @@ export default function ContactSection() {
                                             type="tel"
                                             suppressHydrationWarning
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
-                                            placeholder="+91 ..."
+                                            placeholder="+91 98765 12345"
                                         />
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@ export default function ContactSection() {
                                     <textarea
                                         suppressHydrationWarning
                                         className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[120px]"
-                                        placeholder="Tell us what you need..."
+                                        placeholder="I want details for a water pump suitable for irrigation use near Durg."
                                     />
                                 </div>
                                 <button

@@ -93,6 +93,16 @@ function buildProductInquiryDetails(product) {
     return details;
 }
 
+function getProductHighlights(product) {
+    const baseText = product.shortDescription || product.description || '';
+
+    return baseText
+        .split(/\r?\n|[|.]/)
+        .map((item) => item.replace(/^[\s\-\u2022.]+/, '').trim())
+        .filter(Boolean)
+        .slice(0, 2);
+}
+
 const defaultProductCategories = [
     {
         name: 'Rice Mills & Mini Rice Mills',
@@ -251,50 +261,80 @@ export default async function CategoryPage({ params }) {
                     {categoryProducts.map((product, index) => {
                         const displayPrice = formatPrice(product.retailPrice || product.wholesalePrice || product.mrp);
                         const productDescription = product.shortDescription || product.description || `Browse details and send an inquiry for ${product.name}.`;
+                        const productHighlights = getProductHighlights(product);
                         return (
                             <ScrollReveal key={index} delay={index * 100}>
-                                <div className="bg-white rounded-[2rem] p-5 shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col h-full group">
-                                    <div className="h-52 mb-5 rounded-[1.5rem] bg-gray-50 overflow-hidden relative">
+                                <div className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-sm">
+                                    <div className="relative h-56 overflow-hidden bg-neutral-surface">
                                         <img
                                             src={product.image || productCardFallbackImage}
                                             alt={product.name}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            className="w-full h-full object-cover"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+                                        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
                                         <div className="absolute top-4 right-4">
-                                            <span className={`inline-flex items-center rounded-full px-3 py-1 text-[11px] font-bold ${product.stock > 0 ? 'bg-white/90 text-emerald-700' : 'bg-white/90 text-rose-600'}`}>
+                                            <span className={`inline-flex items-center rounded-full px-3 py-1 text-[11px] font-bold shadow-sm backdrop-blur ${product.stock > 0 ? 'bg-white/92 text-emerald-700' : 'bg-white/92 text-rose-600'}`}>
                                                 {product.stock > 0 ? 'In Stock' : 'Check Availability'}
                                             </span>
                                         </div>
-                                    </div>
-                                    <div className="flex items-start justify-between gap-4">
-                                        <h3 className="text-xl font-bold text-text-primary">{product.name}</h3>
                                         {displayPrice && (
-                                            <p className="text-sm font-black text-brand-primary whitespace-nowrap">{displayPrice}</p>
+                                            <div className="absolute left-4 bottom-4 rounded-2xl bg-white/92 px-4 py-2 shadow-lg backdrop-blur">
+                                                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gray-400">Price</p>
+                                                <p className="text-base font-black text-brand-primary">{displayPrice}</p>
+                                            </div>
                                         )}
                                     </div>
-                                    <p className="text-sm text-text-secondary mt-3">{productDescription}</p>
-                                    <div className="mt-4 flex flex-wrap gap-2 text-xs">
-                                        {product.sku && (
-                                            <span className="rounded-full bg-gray-100 px-3 py-1 font-semibold text-gray-600">
-                                                SKU: {product.sku}
-                                            </span>
+                                    <div className="flex flex-1 flex-col p-6">
+                                        <div className="mb-4">
+                                            <div className="mb-3 h-1.5 w-14 rounded-full bg-brand-primary/80" />
+                                            <h3 className="text-2xl font-primary font-bold leading-tight text-text-primary">
+                                                {product.name}
+                                            </h3>
+                                        </div>
+
+                                        <p className="text-sm leading-7 text-text-secondary line-clamp-3">
+                                            {productDescription}
+                                        </p>
+
+                                        {productHighlights.length > 0 && (
+                                            <div className="mt-5 rounded-[1.5rem] bg-neutral-surface px-4 py-4">
+                                                <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.24em] text-brand-primary">
+                                                    Product Highlights
+                                                </p>
+                                                <ul className="space-y-2.5">
+                                                    {productHighlights.map((highlight, highlightIndex) => (
+                                                        <li key={highlightIndex} className="flex items-start gap-3 text-sm leading-6 text-text-secondary">
+                                                            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-primary" />
+                                                            <span>{highlight}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
                                         )}
-                                        {product.stock > 0 && (
-                                            <span className="rounded-full bg-orange-50 px-3 py-1 font-semibold text-brand-primary">
-                                                {product.stock} available
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="mt-auto pt-6">
+
+                                        <div className="mt-5 flex flex-wrap gap-2 text-xs">
+                                            {product.sku && (
+                                                <span className="rounded-full border border-gray-200 bg-white px-3 py-1.5 font-semibold text-gray-600">
+                                                    SKU: {product.sku}
+                                                </span>
+                                            )}
+                                            {product.stock > 0 && (
+                                                <span className="rounded-full border border-orange-100 bg-orange-50 px-3 py-1.5 font-semibold text-brand-primary">
+                                                    {product.stock} available
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        <div className="mt-auto pt-6">
                                         <InquiryPopupButton
                                             productName={product.name}
                                             price={displayPrice}
                                             details={buildProductInquiryDetails(product)}
-                                            className="w-full py-3 bg-brand-primary text-white rounded-xl text-center text-sm font-bold shadow-cta hover:-translate-y-0.5 transition-all duration-300 inline-block cursor-pointer"
+                                            className="w-full rounded-2xl bg-gradient-to-r from-brand-primary to-brand-secondary py-3.5 text-center text-sm font-bold text-white shadow-[0_14px_30px_rgba(249,115,22,0.26)] inline-block cursor-pointer"
                                         >
                                             Inquire About This Product
                                         </InquiryPopupButton>
+                                        </div>
                                     </div>
                                 </div>
                             </ScrollReveal>

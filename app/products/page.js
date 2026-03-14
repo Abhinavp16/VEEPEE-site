@@ -352,36 +352,38 @@ export default async function ProductsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center">
                         {featuredProducts.map((product, i) => (
                             <ScrollReveal key={i} delay={i * 100}>
-                                <div className="group w-full max-w-[300px] bg-white rounded-[1.5rem] p-4 shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full flex flex-col">
-                                    <div className="aspect-[5/4] rounded-xl overflow-hidden mb-4 relative">
+                                <div className="group mx-auto w-full max-w-[320px] bg-white rounded-2xl p-4 shadow-sm transition-all border border-gray-100 flex flex-col h-full duration-300">
+                                    <div className="aspect-square rounded-2xl overflow-hidden mb-4 relative bg-neutral-background">
                                         <img
                                             src={product.image}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                            className="w-full h-full object-cover"
                                             alt={product.name}
                                         />
                                         {product.badge && (
-                                            <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold shadow-sm uppercase ${product.badgeStyle || 'bg-white/90 backdrop-blur text-brand-primary'
+                                            <div className={`absolute top-3 left-3 px-2 py-1 rounded-md text-[9px] font-bold shadow-sm uppercase ${product.badgeStyle || 'bg-white/95 backdrop-blur text-brand-primary border border-brand-primary/10'
                                                 }`}>
                                                 {product.badge}
                                             </div>
                                         )}
                                     </div>
-                                    <h4 className="text-sm font-bold text-text-primary mb-1.5">{product.name}</h4>
-                                    <p className="text-lg font-black text-brand-primary mb-2.5">{product.price}</p>
-                                    <ul className="text-[11px] text-text-secondary space-y-1 mb-4 flex-grow">
-                                        {product.specs.map((spec, j) => (
-                                            <li key={j} className="flex items-center gap-2 font-medium">
-                                                <svg className="w-3 h-3 text-brand-primary shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                                                </svg>
+                                    <h4 className="text-base font-bold text-text-primary mb-2 line-clamp-2 min-h-[3.25rem]">{product.name}</h4>
+                                    <ul className="text-[11px] text-gray-500 space-y-2 mb-4 min-h-[4.25rem]">
+                                        {(product.specs || []).slice(0, 2).map((spec, j) => (
+                                            <li key={j} className="flex items-start gap-2 leading-relaxed line-clamp-2">
+                                                <div className="w-1 h-1 rounded-full bg-brand-primary/50" />
                                                 {spec}
                                             </li>
                                         ))}
                                     </ul>
-                                    <InquiryPopupButton
-                                        {...buildFeaturedProductInquiryLink(product)}
-                                        className="w-full py-2 bg-neutral-surface text-text-secondary border border-gray-100 hover:bg-orange-500 hover:text-white hover:border-orange-500 rounded-lg text-center text-xs font-bold transition-all duration-300 inline-block leading-none cursor-pointer"
-                                    >{featuredSection.buttonText || 'Get Quote'}</InquiryPopupButton>
+                                    <div className="mt-auto pt-3 border-t border-gray-50">
+                                        <p className="text-lg font-extrabold text-brand-primary mb-3">{product.price}</p>
+                                        <InquiryPopupButton
+                                            {...buildFeaturedProductInquiryLink(product)}
+                                            className="block w-full py-3 bg-neutral-surface text-text-secondary border border-gray-100 rounded-xl text-center text-sm font-bold leading-none cursor-pointer"
+                                        >
+                                            {featuredSection.buttonText || 'Get Quote'}
+                                        </InquiryPopupButton>
+                                    </div>
                                 </div>
                             </ScrollReveal>
                         ))}

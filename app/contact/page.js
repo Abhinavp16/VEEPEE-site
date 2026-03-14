@@ -26,47 +26,63 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
                     <ScrollReveal delay={0}>
-                        <div className="bg-brand-primary rounded-3xl p-8 text-white text-center hover:scale-105 transition-transform">
-                            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <div className="relative h-full min-h-[320px] rounded-[2rem] p-8 text-white text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_55px_rgba(249,115,22,0.28)] overflow-hidden bg-gradient-to-br from-[#ff8f2f] via-[#ff6f0f] to-[#db5800] border border-white/20 flex flex-col items-center justify-center">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.22),_transparent_45%)] pointer-events-none" />
+                            <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+                            <div className="relative z-10 w-18 h-18 bg-white/18 rounded-[1.7rem] flex items-center justify-center mx-auto mb-7 ring-1 ring-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                                 </svg>
                             </div>
-                            <h4 className="text-xl font-bold mb-3">Call Us</h4>
-                            <p className="text-white/80 text-sm mb-4">Direct Sales Helpline</p>
-                            <p className="text-lg font-bold">7828832346</p>
-                            <p className="text-lg font-bold">8962732346</p>
+                            <div className="relative z-10 flex flex-col items-center">
+                                <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/70 mb-3">Direct Connect</p>
+                                <h4 className="text-[2rem] font-primary font-bold mb-3">Call Us</h4>
+                                <p className="text-white/85 text-sm mb-6">Direct Sales Helpline</p>
+                                <div className="space-y-1">
+                                    <p className="text-xl font-black tracking-tight">7828832346</p>
+                                    <p className="text-xl font-black tracking-tight">8962732346</p>
+                                </div>
+                            </div>
                         </div>
                     </ScrollReveal>
                     <ScrollReveal delay={150}>
-                        <div className="bg-gray-900 rounded-3xl p-8 text-white text-center hover:scale-105 transition-transform">
-                            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <div className="relative h-full min-h-[320px] rounded-[2rem] p-8 text-white text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_55px_rgba(15,23,42,0.28)] overflow-hidden bg-gradient-to-br from-[#182238] via-[#111827] to-[#0b1220] border border-white/10 flex flex-col items-center justify-center">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_45%)] pointer-events-none" />
+                            <div className="absolute -left-8 bottom-0 h-24 w-24 rounded-full bg-brand-primary/10 blur-2xl pointer-events-none" />
+                            <div className="relative z-10 w-18 h-18 bg-white/10 rounded-[1.7rem] flex items-center justify-center mx-auto mb-7 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <rect width="20" height="16" x="2" y="4" rx="2" />
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                                 </svg>
                             </div>
-                            <h4 className="text-xl font-bold mb-3">Email Us</h4>
-                            <p className="text-white/60 text-sm mb-4">Official Correspondance</p>
-                            <a href="mailto:ixveepee@gmail.com" className="text-lg font-bold text-brand-primary hover:underline">
-                                ixveepee@gmail.com
-                            </a>
+                            <div className="relative z-10 flex flex-col items-center">
+                                <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/45 mb-3">Official Desk</p>
+                                <h4 className="text-[2rem] font-primary font-bold mb-3">Email Us</h4>
+                                <p className="text-white/60 text-sm mb-6">Official Correspondance</p>
+                                <a href="mailto:ixveepee@gmail.com" className="text-xl font-black text-brand-primary hover:underline break-all">
+                                    ixveepee@gmail.com
+                                </a>
+                            </div>
                         </div>
                     </ScrollReveal>
                     <ScrollReveal delay={300}>
-                        <div className="bg-brand-dark rounded-3xl p-8 text-white text-center hover:scale-105 transition-transform">
-                            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <div className="relative h-full min-h-[320px] rounded-[2rem] p-8 text-white text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_55px_rgba(124,45,18,0.28)] overflow-hidden bg-gradient-to-br from-[#a6491b] via-[#8a3511] to-[#6c2409] border border-white/10 flex flex-col items-center justify-center">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_45%)] pointer-events-none" />
+                            <div className="absolute -right-8 bottom-0 h-24 w-24 rounded-full bg-white/8 blur-2xl pointer-events-none" />
+                            <div className="relative z-10 w-18 h-18 bg-white/10 rounded-[1.7rem] flex items-center justify-center mx-auto mb-7 ring-1 ring-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                                     <circle cx="12" cy="10" r="3" />
                                 </svg>
                             </div>
-                            <h4 className="text-xl font-bold mb-3">Visit Us</h4>
-                            <p className="text-white/60 text-sm mb-4">Registered Address</p>
-                            <p className="text-sm font-medium">
-                                C-15/16, Sector-4, Devendra Nagar,<br />
-                                Raipur - 492001, Chhattisgarh
-                            </p>
+                            <div className="relative z-10 flex flex-col items-center">
+                                <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/45 mb-3">Visit Point</p>
+                                <h4 className="text-[2rem] font-primary font-bold mb-3">Visit Us</h4>
+                                <p className="text-white/65 text-sm mb-6">Registered Address</p>
+                                <p className="max-w-[24ch] text-base font-semibold leading-relaxed">
+                                    C-15/16, Sector-4, Devendra Nagar, Raipur - 492001, Chhattisgarh
+                                </p>
+                            </div>
                         </div>
                     </ScrollReveal>
                 </div>
@@ -86,7 +102,7 @@ export default function ContactPage() {
                                         <input
                                             type="text"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
-                                            placeholder="John Doe"
+                                            placeholder="Amit Verma"
                                             required
                                         />
                                     </div>
@@ -95,7 +111,7 @@ export default function ContactPage() {
                                         <input
                                             type="email"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
-                                            placeholder="john@email.com"
+                                            placeholder="amit.verma@gmail.com"
                                             required
                                         />
                                     </div>
@@ -106,7 +122,7 @@ export default function ContactPage() {
                                         <input
                                             type="tel"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
-                                            placeholder="+91 ..."
+                                            placeholder="+91 98765 43210"
                                             required
                                         />
                                     </div>
@@ -126,7 +142,7 @@ export default function ContactPage() {
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Your Message</label>
                                     <textarea
                                         className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[150px]"
-                                        placeholder="Tell us what you need..."
+                                        placeholder="Namaste, I am looking for a brush cutter for my farm near Raipur. Please share pricing and availability."
                                         required
                                     />
                                 </div>

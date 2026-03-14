@@ -37,22 +37,22 @@ const dealerBenefits = [
 
 const steps = [
     {
-        step: '01',
+        step: '1',
         title: 'Submit Application',
         description: 'Fill out the dealership application form with your business details and preferred territory.',
     },
     {
-        step: '02',
+        step: '2',
         title: 'Evaluation & Approval',
         description: 'Our team evaluates your application based on location, infrastructure, and market potential.',
     },
     {
-        step: '03',
+        step: '3',
         title: 'Agreement & Training',
         description: 'Sign the dealership agreement and attend comprehensive product training sessions.',
     },
     {
-        step: '04',
+        step: '4',
         title: 'Launch & Support',
         description: 'Start selling with full marketing support, initial stock, and a dedicated account manager.',
     },
@@ -119,15 +119,12 @@ export default function DealershipPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {steps.map((step, i) => (
                             <ScrollReveal key={i} delay={i * 150}>
-                                <div className="relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all text-center group">
+                                <div className="relative h-full min-h-[300px] p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all text-center group flex flex-col">
                                     <span className="text-6xl font-black text-brand-primary opacity-30 absolute top-4 right-6 group-hover:opacity-60 transition-opacity">
                                         {step.step}
                                     </span>
-                                    <div className="relative z-10">
-                                        <div className="w-16 h-16 bg-brand-primary/20 rounded-2xl flex items-center justify-center text-brand-primary text-2xl font-bold mx-auto mb-6">
-                                            {step.step}
-                                        </div>
-                                        <h4 className="text-xl font-bold text-white mb-3">{step.title}</h4>
+                                    <div className="relative z-10 flex flex-1 flex-col pt-18">
+                                        <h4 className="min-h-[56px] text-xl font-bold text-white mb-3 flex items-center justify-center">{step.title}</h4>
                                         <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
                                     </div>
                                 </div>
@@ -196,30 +193,30 @@ export default function DealershipPage() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name *</label>
-                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Your Name" required />
+                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Rakesh Gupta" required />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Phone *</label>
-                                        <input type="tel" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="+91 ..." required />
+                                        <input type="tel" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="+91 98261 45870" required />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Email *</label>
-                                    <input type="email" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="email@example.com" required />
+                                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Shop Name</label>
+                                    <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Gupta Agro Tools" />
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">State *</label>
-                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="e.g. Chhattisgarh" required />
+                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Chhattisgarh" required />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">City *</label>
-                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="e.g. Raipur" required />
+                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Raipur" required />
                                     </div>
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Business Description</label>
-                                    <textarea className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[120px]" placeholder="Tell us about your existing business, experience, and why you want to become a dealer..." />
+                                    <textarea className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[120px]" placeholder="We run an agricultural equipment shop in Raipur and want to expand into Oxon products for nearby dealers and farmers." />
                                 </div>
                                 <button
                                     type="submit"
