@@ -35,7 +35,7 @@ export default function Footer() {
 
                     <div className="space-y-4">
                         <p className="text-gray-400 text-base leading-relaxed max-w-lg">
-                            Veepee Impex: Your trusted B2B2C partner for cutting-edge power tools and irrigation systems. Delivering quality across India.
+                            Veepee Impex: Your trusted partner for cutting-edge power tools and irrigation systems. Delivering quality across India.
                         </p>
                         <div className="flex flex-wrap gap-3">
                             <a

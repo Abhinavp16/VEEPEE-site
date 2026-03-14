@@ -107,12 +107,11 @@ export default function ContactPage() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Email Address</label>
+                                        <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Email Address (Optional)</label>
                                         <input
                                             type="email"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="amit.verma@gmail.com"
-                                            required
                                         />
                                     </div>
                                 </div>

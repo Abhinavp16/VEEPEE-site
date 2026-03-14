@@ -174,7 +174,7 @@ export default function AboutPage() {
                                     alt="Warehouse"
                                 />
                                 <img
-                                    src="/images/banner/1.jpg"
+                                    src="/images/Banner/1.jpg"
                                     className="rounded-2xl shadow-lg w-full h-auto sm:h-[200px] object-contain object-center sm:object-cover"
                                     alt="Product"
                                 />

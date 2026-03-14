@@ -49,7 +49,7 @@ export default function SustainabilitySection() {
                             </svg>
                         </Link>
                         <Link
-                            href="/products"
+                            href="/#products"
                             className="px-8 py-4 bg-white border border-gray-200 text-text-primary rounded-full font-bold hover:border-brand-primary hover:text-brand-primary transition-all"
                         >
                             Buy Machines Now
