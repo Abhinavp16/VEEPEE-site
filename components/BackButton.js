@@ -18,7 +18,7 @@ export default function BackButton({ fallbackHref = '/' }) {
         <button
             type="button"
             onClick={handleBack}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_10px_30px_rgba(15,23,42,0.28)] backdrop-blur-md transition-colors hover:bg-white/16"
+            className="inline-flex h-12 items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 text-white shadow-[0_10px_30px_rgba(15,23,42,0.28)] backdrop-blur-md transition-colors hover:bg-white/16"
             aria-label="Go back"
         >
             <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
@@ -30,6 +30,7 @@ export default function BackButton({ fallbackHref = '/' }) {
                     strokeLinejoin="round"
                 />
             </svg>
+            <span className="text-sm font-semibold tracking-wide">Back</span>
         </button>
     );
 }
