@@ -19,8 +19,8 @@ export default function HeroSection({ heroImages: initialHeroImages = defaultHer
     }, [heroImages.length]);
 
     return (
-        <section className="px-4 md:px-8 pb-12 pt-6 max-w-7xl mx-auto">
-            <div className="relative w-full h-[650px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
+        <section className="px-4 md:px-8 pb-12 pt-8 md:pt-6 max-w-7xl mx-auto">
+            <div className="relative w-full min-h-[720px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
                 {heroImages.map((image, index) => (
                     <div
                         key={`${image}-${index}`}
@@ -40,11 +40,11 @@ export default function HeroSection({ heroImages: initialHeroImages = defaultHer
                                 Premium IMPOTER &amp; MANUFACTURER
                             </span>
                         </div>
-                        <h1 className="text-5xl md:text-8xl font-primary font-bold leading-[1.1] mb-6">
+                        <h1 className="text-4xl sm:text-5xl md:text-8xl font-primary font-bold leading-[1.1] mb-6">
                             Veepee <br />
                             <span className="text-brand-primary">Impex</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-300 max-w-lg mb-10 leading-relaxed font-light">
+                        <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-lg mb-8 md:mb-10 leading-relaxed font-light">
                             Distributor of Oxon heavy machinery. Empowering Indian farmers and industries with professional power tools, irrigation systems, and agricultural innovation.
                         </p>
                         <div className="flex flex-wrap gap-4">
@@ -71,12 +71,12 @@ export default function HeroSection({ heroImages: initialHeroImages = defaultHer
                     </ScrollReveal>
 
                     {/* Realistic Floating App CTA */}
-                    <div className="absolute bottom-6 left-4 right-4 lg:bottom-10 lg:right-10 lg:left-auto lg:right-10 block animate-fade-in-up z-20">
+                    <div className="relative mt-8 md:mt-0 md:absolute md:bottom-6 md:left-4 md:right-4 lg:bottom-10 lg:left-auto lg:right-10 block animate-fade-in-up z-20">
                         <div className="group relative">
                             {/* Ambient Glow */}
                             <div className="absolute -inset-4 bg-brand-primary/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
-                            <div className="relative backdrop-blur-xl bg-white/10 lg:bg-white/5 border border-white/20 lg:border-white/10 p-3 lg:p-4 pl-4 lg:pl-6 rounded-2xl lg:rounded-3xl flex items-center justify-between lg:justify-start gap-3 lg:gap-8 shadow-2xl overflow-hidden transition-all duration-500 hover:translate-y-[-5px] hover:bg-white/10">
+                            <div className="relative backdrop-blur-xl bg-white/10 lg:bg-white/5 border border-white/20 lg:border-white/10 p-3 sm:p-4 lg:p-4 pl-4 lg:pl-6 rounded-2xl lg:rounded-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between lg:justify-start gap-3 sm:gap-4 lg:gap-8 shadow-2xl overflow-hidden transition-all duration-500 hover:translate-y-[-5px] hover:bg-white/10">
                                 {/* Lens Flare Effect */}
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rotate-45 translate-x-16 -translate-y-16 group-hover:translate-x-12 transition-transform duration-1000"></div>
 
@@ -94,7 +94,7 @@ export default function HeroSection({ heroImages: initialHeroImages = defaultHer
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Get the OXON app on Google Play"
-                                    className="relative z-10 bg-white text-gray-900 px-4 lg:px-6 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl flex items-center gap-2 lg:gap-3 border border-gray-200 hover:bg-orange-50 transition-all hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)] group/play"
+                                    className="relative z-10 bg-white text-gray-900 w-full sm:w-auto px-4 sm:px-5 lg:px-6 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl flex items-center justify-center gap-2 lg:gap-3 border border-gray-200 hover:bg-orange-50 transition-all hover:shadow-[0_10px_25px_rgba(255,255,255,0.2)] group/play"
                                 >
                                     <svg viewBox="0 0 24 24" fill="none" className="w-[18px] h-[18px] lg:w-[22px] lg:h-[22px] group-hover/play:scale-110 transition-transform duration-500">
                                         <path d="M3 2.5v19l9.2-9.5L3 2.5z" fill="#00D4FF" />

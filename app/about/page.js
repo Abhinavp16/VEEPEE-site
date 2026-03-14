@@ -138,7 +138,7 @@ export default function AboutPage() {
                     </ScrollReveal>
 
                     <ScrollReveal className="relative">
-                        <div className="grid grid-cols-2 gap-4 min-h-[620px]">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 min-h-0 sm:min-h-[620px]">
                             <div className="space-y-4">
                                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                                     <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Pan India Reach</p>
@@ -146,17 +146,21 @@ export default function AboutPage() {
                                 </div>
                                 <img
                                     src="/images/about/front.png"
-                                    className="rounded-2xl shadow-lg w-full h-[260px] object-cover"
+                                    className="rounded-2xl shadow-lg w-full h-auto object-contain object-center"
                                     alt="Industrial Tools"
                                 />
                                 <img
                                     src="/images/about/office.png"
-                                    className="rounded-2xl shadow-lg w-full h-[200px] object-cover"
+                                    className="rounded-2xl shadow-lg w-full h-auto sm:h-[200px] object-contain object-center sm:object-cover"
                                     alt="Veepee Impex office"
                                 />
                                 <div className="bg-brand-primary p-6 rounded-2xl text-white">
                                     <p className="text-3xl font-bold italic mb-1">Since 2023</p>
                                     <p className="text-xs uppercase tracking-tighter opacity-80">Trusted Partnership Firm</p>
+                                </div>
+                                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                                    <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Fast Dispatch</p>
+                                    <p className="text-sm font-semibold text-text-primary">Ready inventory and dependable fulfillment for dealers, retailers, and bulk buyers.</p>
                                 </div>
                             </div>
                             <div className="space-y-4">
@@ -166,12 +170,12 @@ export default function AboutPage() {
                                 </div>
                                 <img
                                     src="/images/about/godown.png"
-                                    className="rounded-2xl shadow-lg w-full h-[300px] object-cover"
+                                    className="rounded-2xl shadow-lg w-full h-auto sm:h-[300px] object-contain object-center sm:object-cover"
                                     alt="Warehouse"
                                 />
                                 <img
                                     src="/images/banner/1.jpg"
-                                    className="rounded-2xl shadow-lg w-full h-[200px] object-cover"
+                                    className="rounded-2xl shadow-lg w-full h-auto sm:h-[200px] object-contain object-center sm:object-cover"
                                     alt="Product"
                                 />
                                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">

@@ -246,7 +246,7 @@ export default async function ProductsPage() {
             <section className="px-6 pt-10">
                 <ScrollReveal className="max-w-7xl mx-auto">
                     <div className="bg-white border border-gray-100 rounded-2xl p-4 md:p-6 shadow-sm overflow-x-auto custom-scrollbar">
-                        <div className="flex justify-center items-center gap-8 md:gap-12 lg:gap-16 min-w-max px-2">
+                        <div className="flex w-max min-w-full items-center justify-start md:justify-center gap-8 md:gap-12 lg:gap-16 px-2">
                             <div className="flex items-center justify-center transition-all h-10 md:h-12 w-auto shrink-0">
                                 <img src="/images/oxon.jpeg" alt="OXON™" className="h-full object-contain" />
                             </div>
