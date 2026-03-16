@@ -83,10 +83,21 @@ export default async function FeaturedProductDetailPage({ params }) {
                                 {product.price}
                             </p>
 
-                            <p className="mt-6 text-base leading-8 text-text-secondary">
-                                {getFeaturedDescription(product)}
-                            </p>
+                            {/* Always show short description if available */}
+                            {product.shortDescription && (
+                                <p className="mt-6 text-base leading-8 text-text-secondary">
+                                    {product.shortDescription}
+                                </p>
+                            )}
 
+                            {/* Show description if no short description */}
+                            {!product.shortDescription && product.description && (
+                                <p className="mt-6 text-base leading-8 text-text-secondary">
+                                    {product.description}
+                                </p>
+                            )}
+
+                            {/* Always show Key Features if available */}
                             {product.specs.length > 0 && (
                                 <div className="mt-8 rounded-[1.9rem] bg-neutral-surface p-6">
                                     <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-primary">
