@@ -83,34 +83,35 @@ export default async function FeaturedProductDetailPage({ params }) {
                                 {product.price}
                             </p>
 
-                            {/* Show short description OR description (not both with specs) */}
-                            {product.shortDescription ? (
+                            {/* Always show short description if available */}
+                            {product.shortDescription && (
                                 <p className="mt-6 text-base leading-8 text-text-secondary">
                                     {product.shortDescription}
                                 </p>
-                            ) : (
-                                <>
-                                    <p className="mt-6 text-base leading-8 text-text-secondary">
-                                        {product.description}
-                                    </p>
+                            )}
 
-                                    {/* Show Key Features only if no short description */}
-                                    {product.specs.length > 0 && (
-                                        <div className="mt-8 rounded-[1.9rem] bg-neutral-surface p-6">
-                                            <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-primary">
-                                                Key Features
-                                            </h3>
-                                            <ul className="mt-4 space-y-3">
-                                                {product.specs.slice(0, 4).map((spec, index) => (
-                                                    <li key={index} className="flex items-start gap-3 text-sm leading-7 text-text-secondary">
-                                                        <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-primary" />
-                                                        <span>{spec}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-                                </>
+                            {/* Show description if no short description */}
+                            {!product.shortDescription && product.description && (
+                                <p className="mt-6 text-base leading-8 text-text-secondary">
+                                    {product.description}
+                                </p>
+                            )}
+
+                            {/* Always show Key Features if available */}
+                            {product.specs.length > 0 && (
+                                <div className="mt-8 rounded-[1.9rem] bg-neutral-surface p-6">
+                                    <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-primary">
+                                        Key Features
+                                    </h3>
+                                    <ul className="mt-4 space-y-3">
+                                        {product.specs.slice(0, 4).map((spec, index) => (
+                                            <li key={index} className="flex items-start gap-3 text-sm leading-7 text-text-secondary">
+                                                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-primary" />
+                                                <span>{spec}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             )}
 
                             <div className="mt-10">

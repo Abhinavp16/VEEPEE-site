@@ -33,14 +33,18 @@ export default function FeaturedProductCard({
                     {normalizedProduct.name}
                 </h4>
 
-                {normalizedProduct.shortDescription ? (
+                {/* Always show short description if available */}
+                {normalizedProduct.shortDescription && (
                     <div className="mt-3">
                         <p className="text-xs font-bold text-gray-400">Description:</p>
                         <p className="mt-2 text-[0.92rem] leading-relaxed text-gray-500">
                             {normalizedProduct.shortDescription}
                         </p>
                     </div>
-                ) : (
+                )}
+
+                {/* Always show key features if available */}
+                {visibleSpecs.length > 0 && (
                     <div className="mt-3">
                         <p className="text-xs font-bold text-gray-400">Key Features:</p>
                         <ul className="mt-2 space-y-2 text-[0.92rem] leading-relaxed text-gray-500">
