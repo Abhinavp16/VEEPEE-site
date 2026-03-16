@@ -34,17 +34,9 @@ export default function FeaturedProductCard({
                     {normalizedProduct.name}
                 </h4>
 
-                <div className="mt-3">
-                    <p className="text-xs font-bold text-gray-400">Key Features:</p>
-                    <ul className="mt-2 space-y-2 text-[0.92rem] leading-relaxed text-gray-500">
-                        {visibleSpecs.map((spec, index) => (
-                            <li key={index} className="flex items-start gap-2">
-                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-200" />
-                                <span>{spec}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                <p className="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    {cardDescription}
+                </p>
 
                 <div className="mt-auto flex items-center justify-between gap-3 border-t border-orange-50 pt-5">
                     <p className="text-[1.1rem] font-black text-brand-primary">
