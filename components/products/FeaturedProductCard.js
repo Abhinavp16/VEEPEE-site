@@ -30,7 +30,7 @@ export default function FeaturedProductCard({
             </div>
 
             <div className="flex flex-1 flex-col px-1">
-                <h4 className="min-h-[4rem] text-[1.05rem] font-bold leading-snug text-brand-primary">
+                <h4 className="min-h-[4rem] text-[1.05rem] font-bold leading-snug text-text-primary">
                     {normalizedProduct.name}
                 </h4>
 
