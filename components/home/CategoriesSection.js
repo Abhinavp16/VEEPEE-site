@@ -70,8 +70,7 @@ export default function CategoriesSection({
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-5">
                 {categories.map((cat, i) => {
                     const descriptionPoints = getDescriptionPoints(cat.description);
-                    const hasPointList = descriptionPoints.length > 1;
-                    const visiblePoints = descriptionPoints.slice(0, 3);
+                    const cardDescription = descriptionPoints.join(' ') || cat.description;
 
                     return (
                         <ScrollReveal key={i} delay={i * 80}>
@@ -79,32 +78,21 @@ export default function CategoriesSection({
                                 href={`/category/${encodeURIComponent(cat.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '')}`}
                                 className="group flex h-full w-full max-w-[390px] mx-auto flex-col bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                             >
-                                <div className="aspect-[5/4] overflow-hidden bg-neutral-surface p-4 lg:p-5">
+                                <div className="aspect-square overflow-hidden rounded-3xl bg-neutral-surface">
                                     <img
                                         src={cat.image}
-                                        className="w-full h-full object-contain object-center"
+                                        className="h-full w-full object-cover object-center"
                                         alt={cat.name}
                                     />
                                 </div>
                                 <div className="flex min-h-[200px] flex-1 flex-col items-center px-4 py-5 lg:min-h-[190px] lg:px-4 lg:py-5">
                                     <div className="mb-3 h-1 w-10 rounded-full bg-brand-primary/80" />
-                                    <h3 className="min-h-[4rem] text-center text-[1.55rem] font-bold text-text-primary leading-tight lg:text-[1.45rem]">
+                                    <h3 className="min-h-[2.8rem] text-center text-[1.55rem] font-bold text-text-primary leading-tight lg:min-h-[3.2rem] lg:text-[1.45rem]">
                                         {cat.name}
                                     </h3>
-                                    {hasPointList ? (
-                                        <ul className="mt-3 w-full max-w-[24ch] space-y-2 text-left text-[0.88rem] leading-relaxed text-text-secondary lg:max-w-[22ch] lg:text-[0.84rem]">
-                                            {visiblePoints.map((point, index) => (
-                                                <li key={index} className="flex items-start gap-2">
-                                                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-primary/70" />
-                                                    <span>{point}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <p className="mt-3 w-full max-w-[24ch] text-left text-[0.88rem] leading-relaxed text-text-secondary line-clamp-5 lg:max-w-[22ch] lg:text-[0.84rem]">
-                                            {descriptionPoints[0] || cat.description}
-                                        </p>
-                                    )}
+                                    <p className="mt-0.5 min-h-[4.5rem] w-full text-left text-sm leading-6 text-gray-500 line-clamp-3">
+                                        {cardDescription}
+                                    </p>
                                 </div>
                             </Link>
                         </ScrollReveal>

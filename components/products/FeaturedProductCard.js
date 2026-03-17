@@ -15,11 +15,11 @@ export default function FeaturedProductCard({
     const cardDescription = getFeaturedDescription(normalizedProduct);
 
     return (
-        <div className="group mx-auto flex h-full w-full max-w-[320px] flex-col rounded-[1.8rem] border border-orange-100 bg-white p-3 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
-            <div className="relative mb-4 aspect-square overflow-hidden rounded-[1.35rem] bg-white">
+        <div className="group mx-auto flex h-full w-full max-w-[320px] flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300">
+            <div className="relative aspect-square overflow-hidden rounded-3xl bg-neutral-surface">
                 <img
                     src={normalizedProduct.image || featuredProductFallbackImage}
-                    className="h-full w-full object-contain object-center"
+                    className="h-full w-full object-cover object-center"
                     alt={normalizedProduct.name}
                 />
                 {normalizedProduct.badge && (
@@ -29,16 +29,16 @@ export default function FeaturedProductCard({
                 )}
             </div>
 
-            <div className="flex flex-1 flex-col px-1">
-                <h4 className="min-h-[4rem] text-[1.05rem] font-bold leading-snug text-text-primary">
+            <div className="flex flex-1 flex-col px-5 py-5">
+                <h4 className="min-h-[3.6rem] text-[1.05rem] font-bold leading-snug text-text-primary">
                     {normalizedProduct.name}
                 </h4>
 
-                <p className="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                <p className="mt-2.5 line-clamp-2 text-sm leading-6 text-gray-500">
                     {cardDescription}
                 </p>
 
-                <div className="mt-auto flex items-center justify-between gap-3 border-t border-orange-50 pt-5">
+                <div className="mt-auto flex items-center justify-between gap-3 border-t border-gray-100 pt-5">
                     <p className="text-[1.1rem] font-black text-brand-primary">
                         {normalizedProduct.price}
                     </p>
