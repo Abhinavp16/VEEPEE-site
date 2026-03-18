@@ -63,6 +63,11 @@ export default async function CategoryPage({ params }) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
                     {categoryProducts.map((product, index) => {
+                        const cardDescription =
+                            product.shortDescription ||
+                            product.description ||
+                            `Explore ${product.name} with reliable performance for professional agricultural and industrial use.`;
+
                         return (
                             <ScrollReveal key={index} delay={index * 80}>
                                 <div className="flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-gray-100 bg-white p-3 shadow-sm">
@@ -78,6 +83,9 @@ export default async function CategoryPage({ params }) {
                                         <h3 className="min-h-[3.25rem] text-base font-bold leading-tight text-text-primary line-clamp-2">
                                             {product.name}
                                         </h3>
+                                        <p className="mt-2 min-h-[4.5rem] text-sm leading-6 text-gray-500 line-clamp-3">
+                                            {cardDescription}
+                                        </p>
 
                                         <div className="mt-auto pt-4">
                                             <Link

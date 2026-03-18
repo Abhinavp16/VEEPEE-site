@@ -50,15 +50,17 @@ export default function ProductsSection({
     section = defaultFeaturedSection,
 }) {
     return (
-        <section id="products" className="py-24 bg-neutral-surface">
-            <div className="max-w-[1440px] mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <section id="products" className="py-16 sm:py-24 bg-neutral-surface">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-6">
+                <div className="mb-10 sm:mb-12 flex flex-col items-center gap-4 sm:gap-6 md:flex-row md:items-end md:justify-between">
                     <ScrollReveal>
-                        <h2 className="text-sm font-bold text-brand-primary uppercase tracking-[0.3em] mb-4">{section.eyebrow}</h2>
-                        <h3 className="text-3xl md:text-4xl font-primary font-bold text-text-primary">{section.title}</h3>
+                        <h2 className="mb-3 text-center text-xs sm:text-sm font-bold text-brand-primary uppercase tracking-[0.24em] sm:tracking-[0.3em] md:text-left">{section.eyebrow}</h2>
+                        <h3 className="max-w-[12ch] text-center text-[2rem] sm:text-3xl md:text-4xl font-primary font-bold text-text-primary leading-[1.08] md:text-left">
+                            {section.title}
+                        </h3>
                     </ScrollReveal>
                     <ScrollReveal>
-                        <p className="text-text-secondary text-sm max-w-sm">
+                        <p className="max-w-sm text-center text-[15px] sm:text-sm leading-7 sm:leading-6 text-text-secondary md:text-left">
                             {section.sideText}
                         </p>
                     </ScrollReveal>

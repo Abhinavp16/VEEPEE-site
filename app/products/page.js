@@ -333,14 +333,14 @@ export default async function ProductsPage() {
             </section>
 
             {/* Featured Products - Original product cards */}
-            <section className="py-24 bg-neutral-surface">
-                <div className="max-w-7xl mx-auto px-6">
-                    <ScrollReveal className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <section className="py-16 sm:py-24 bg-neutral-surface">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <ScrollReveal className="mb-10 sm:mb-16 flex flex-col items-center gap-4 sm:gap-6 md:flex-row md:items-end md:justify-between">
                         <div>
-                            <h2 className="text-sm font-bold text-brand-primary uppercase tracking-[0.3em] mb-4">{featuredSection.eyebrow}</h2>
-                            <h3 className="text-4xl md:text-5xl font-primary font-bold text-text-primary">{featuredSection.title}</h3>
+                            <h2 className="mb-3 text-center text-xs sm:text-sm font-bold text-brand-primary uppercase tracking-[0.24em] sm:tracking-[0.3em] md:text-left">{featuredSection.eyebrow}</h2>
+                            <h3 className="max-w-[12ch] text-center text-[2rem] sm:text-4xl md:text-5xl font-primary font-bold text-text-primary leading-[1.08] md:text-left">{featuredSection.title}</h3>
                         </div>
-                        <p className="text-text-secondary max-w-sm">
+                        <p className="max-w-sm text-center text-[15px] sm:text-base leading-7 sm:leading-relaxed text-text-secondary md:text-left">
                             {featuredSection.sideText}
                         </p>
                     </ScrollReveal>

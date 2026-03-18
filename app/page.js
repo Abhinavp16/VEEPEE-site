@@ -5,7 +5,6 @@ import AboutSection from '@/components/home/AboutSection';
 import ProductsSection from '@/components/home/ProductsSection';
 import CategoriesSection from '@/components/home/CategoriesSection';
 import StatsSection from '@/components/home/StatsSection';
-import SustainabilitySection from '@/components/home/SustainabilitySection';
 import BlogSection from '@/components/home/BlogSection';
 import ContactSection from '@/components/home/ContactSection';
 import { getWebsiteContent } from '@/lib/website-content';
@@ -30,7 +29,6 @@ export default async function Home() {
       <ProductsSection products={featuredProducts} section={featuredSection} />
       <CategoriesSection categories={productCategories} section={categoriesSection} />
       <StatsSection />
-      <SustainabilitySection />
       <BlogSection />
       <ContactSection />
     </>

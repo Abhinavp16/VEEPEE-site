@@ -11,24 +11,45 @@ export default function Footer() {
                         <h2 className="text-3xl md:text-4xl font-primary font-semibold mb-4 leading-tight">
                             Empowering Indian Agriculture with Heavy Machinery
                         </h2>
-                        <div className="flex flex-wrap gap-6 mt-6">
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M20 6 9 17l-5-5" />
-                                    </svg>
+                        <div className="mt-6 space-y-4">
+                            <div className="flex flex-wrap gap-6">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M20 6 9 17l-5-5" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-xs text-gray-400 font-medium">GST-22AAXFV7313A1Z8</span>
                                 </div>
-                                <span className="text-xs text-gray-400 font-medium">GST-22AAXFV7313A1Z8</span>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                                            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+                                            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-xs text-gray-400 font-medium">IEC-AAXFV7313A</span>
+                                </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
-                                        <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
-                                        <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
-                                    </svg>
+                            <div className="flex flex-wrap gap-6">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-xs text-gray-400 font-medium">7828832346 / 8962732346</span>
                                 </div>
-                                <span className="text-xs text-gray-400 font-medium">IEC-AAXFV7313A</span>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-xs text-gray-400 font-medium">ixveepee@gmail.com</span>
+                                </div>
                             </div>
                         </div>
                     </div>
