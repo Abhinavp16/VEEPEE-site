@@ -19,8 +19,8 @@ export default function HeroSection({ heroImages: initialHeroImages = defaultHer
     }, [heroImages.length]);
 
     return (
-        <section className="px-4 md:px-8 pb-12 pt-8 md:pt-6 max-w-7xl mx-auto">
-            <div className="relative w-full min-h-[720px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
+        <section className="px-4 md:px-8 pb-10 md:pb-12 pt-8 md:pt-6 max-w-7xl mx-auto">
+            <div className="relative w-full min-h-[640px] sm:min-h-[700px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
                 {heroImages.map((image, index) => (
                     <div
                         key={`${image}-${index}`}
@@ -32,25 +32,25 @@ export default function HeroSection({ heroImages: initialHeroImages = defaultHer
                 ))}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-[1]" />
 
-                <div className="relative h-full flex flex-col justify-center p-8 md:p-16 text-white z-10">
+                <div className="relative h-full flex flex-col justify-center p-6 sm:p-8 md:p-16 text-white z-10">
                     <ScrollReveal className="max-w-2xl">
-                        <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-brand-primary/20 backdrop-blur-md rounded-full border border-brand-primary/30">
+                        <div className="inline-flex max-w-full items-center gap-2 mb-5 sm:mb-6 px-3.5 sm:px-4 py-1.5 bg-brand-primary/20 backdrop-blur-md rounded-full border border-brand-primary/30">
                             <span className="w-2 h-2 bg-brand-primary animate-pulse rounded-full" />
-                            <span className="text-xs md:text-sm font-bold tracking-wider text-brand-primary uppercase">
+                            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.18em] sm:tracking-wider text-brand-primary uppercase">
                                 Premium IMPOTER &amp; MANUFACTURER
                             </span>
                         </div>
-                        <h1 className="text-4xl sm:text-5xl md:text-8xl font-primary font-bold leading-[1.1] mb-6">
+                        <h1 className="max-w-[8ch] text-[2.6rem] sm:text-5xl md:text-8xl font-primary font-bold leading-[1.02] sm:leading-[1.1] mb-5 sm:mb-6 break-words">
                             Veepee <br />
                             <span className="text-brand-primary">Impex</span>
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-lg mb-8 md:mb-10 leading-relaxed font-light">
+                        <p className="text-[15px] sm:text-lg md:text-xl text-gray-300 max-w-md sm:max-w-lg mb-7 md:mb-10 leading-7 sm:leading-relaxed font-light">
                             Distributor of Oxon heavy machinery. Empowering Indian farmers and industries with professional power tools, irrigation systems, and agricultural innovation.
                         </p>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
                             <Link
                                 href="/products"
-                                className="relative px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-full font-bold hover:shadow-[0_8px_25px_rgba(249,115,22,0.4)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 group/btn overflow-hidden"
+                                className="relative w-full sm:w-auto justify-center px-7 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-full font-bold hover:shadow-[0_8px_25px_rgba(249,115,22,0.4)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 group/btn overflow-hidden"
                             >
                                 <span className="relative z-10 flex items-center gap-3">
                                     Explore Products
@@ -63,7 +63,7 @@ export default function HeroSection({ heroImages: initialHeroImages = defaultHer
                             </Link>
                             <Link
                                 href="/about"
-                                className="px-8 py-4 bg-white/5 backdrop-blur-md border border-white/20 text-white rounded-full font-bold hover:bg-white hover:text-brand-primary hover:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                                className="w-full sm:w-auto text-center px-7 sm:px-8 py-3.5 sm:py-4 bg-white/5 backdrop-blur-md border border-white/20 text-white rounded-full font-bold hover:bg-white hover:text-brand-primary hover:border-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                             >
                                 Our Legacy
                             </Link>
@@ -76,7 +76,7 @@ export default function HeroSection({ heroImages: initialHeroImages = defaultHer
                             {/* Ambient Glow */}
                             <div className="absolute -inset-4 bg-brand-primary/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
-                            <div className="relative backdrop-blur-xl bg-white/10 lg:bg-white/5 border border-white/20 lg:border-white/10 p-3 sm:p-4 lg:p-4 pl-4 lg:pl-6 rounded-2xl lg:rounded-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between lg:justify-start gap-3 sm:gap-4 lg:gap-8 shadow-2xl overflow-hidden transition-all duration-500 hover:translate-y-[-5px] hover:bg-white/10">
+                            <div className="relative max-w-[320px] sm:max-w-none backdrop-blur-xl bg-white/10 lg:bg-white/5 border border-white/20 lg:border-white/10 p-3 sm:p-4 lg:p-4 pl-4 lg:pl-6 rounded-2xl lg:rounded-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between lg:justify-start gap-3 sm:gap-4 lg:gap-8 shadow-2xl overflow-hidden transition-all duration-500 hover:translate-y-[-5px] hover:bg-white/10">
                                 {/* Lens Flare Effect */}
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rotate-45 translate-x-16 -translate-y-16 group-hover:translate-x-12 transition-transform duration-1000"></div>
 

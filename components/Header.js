@@ -31,25 +31,25 @@ export default function Header() {
             className="fixed top-4 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8"
         >
             <nav
-                className={`flex items-center justify-between px-6 py-3 max-w-7xl mx-auto w-full transition-all duration-500 rounded-2xl ${scrolled
+                className={`flex items-center justify-between px-4 py-3 sm:px-6 max-w-7xl mx-auto w-full transition-all duration-500 rounded-2xl ${scrolled
                     ? 'bg-white/80 backdrop-blur-md border border-white/20 ring-1 ring-black/5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] py-2.5'
                     : 'bg-white border border-gray-100/80 ring-4 ring-gray-50/50 shadow-sm py-4'
                     }`}
             >
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 group">
-                    <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-cta transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <Link href="/" className="flex min-w-0 items-center gap-2 sm:gap-3 group">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 bg-white rounded-xl flex items-center justify-center shadow-cta transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                         <img
                             src="/images/veepeee logo.png"
                             alt="Veepee Impex Logo"
-                            className="w-14 h-14 object-contain"
+                            className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
                         />
                     </div>
-                    <div className="flex flex-col">
-                        <span className="text-xl font-bold tracking-tight text-text-primary leading-none group-hover:text-brand-primary transition-colors">
+                    <div className="flex min-w-0 flex-col">
+                        <span className="truncate text-lg sm:text-xl font-bold tracking-tight text-text-primary leading-none group-hover:text-brand-primary transition-colors">
                             Veepee Impex
                         </span>
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-brand-primary font-bold mt-1">
+                        <span className="mt-1 hidden text-[10px] uppercase tracking-[0.2em] text-brand-primary font-bold sm:block">
                             Pan India Importer & Manufacturer
                         </span>
                     </div>

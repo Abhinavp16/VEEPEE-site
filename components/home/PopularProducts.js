@@ -30,30 +30,30 @@ export default function PopularProducts() {
     }, []);
 
     return (
-        <section id="popular-products" className="py-24 bg-white">
-            <div className="max-w-[1600px] mx-auto px-6">
-                <div className="text-center mb-16">
+        <section id="popular-products" className="py-16 sm:py-24 bg-white">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
+                <div className="text-center mb-10 sm:mb-16">
                     <ScrollReveal>
-                        <h2 className="text-sm font-bold text-brand-primary uppercase tracking-[0.3em] mb-4">Customer Favorites</h2>
-                        <h3 className="text-3xl md:text-5xl font-primary font-bold text-text-primary px-4 bg-gradient-to-r from-brand-primary to-brand-dark bg-clip-text text-transparent">
+                        <h2 className="text-xs sm:text-sm font-bold text-brand-primary uppercase tracking-[0.24em] sm:tracking-[0.3em] mb-3 sm:mb-4">Customer Favorites</h2>
+                        <h3 className="text-[2rem] sm:text-3xl md:text-5xl font-primary font-bold text-text-primary px-2 sm:px-4 bg-gradient-to-r from-brand-primary to-brand-dark bg-clip-text text-transparent leading-[1.08]">
                             Our Popular Product
                         </h3>
-                        <div className="w-24 h-1.5 bg-brand-primary mx-auto mt-6 rounded-full" />
+                        <div className="w-20 sm:w-24 h-1.5 bg-brand-primary mx-auto mt-5 sm:mt-6 rounded-full" />
                     </ScrollReveal>
                 </div>
 
-                <div className="flex lg:grid lg:grid-cols-5 gap-6 overflow-x-auto pb-8 lg:pb-0 scrollbar-hide snap-x">
+                <div className="flex lg:grid lg:grid-cols-5 gap-4 sm:gap-6 overflow-x-auto pb-6 sm:pb-8 lg:pb-0 scrollbar-hide snap-x">
                     {products.map((product, i) => (
-                        <ScrollReveal key={i} delay={i * 50} className="min-w-[280px] lg:min-w-0 snap-center">
+                        <ScrollReveal key={i} delay={i * 50} className="min-w-[240px] sm:min-w-[280px] lg:min-w-0 snap-center">
                             <FeaturedProductCard product={product} />
                         </ScrollReveal>
                     ))}
                 </div>
 
-                <div className="mt-16 text-center">
+                <div className="mt-10 sm:mt-16 text-center">
                     <Link
                         href="/products"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-white font-bold rounded-full hover:bg-brand-primary transition-all duration-300 group shadow-xl"
+                        className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-text-primary text-white font-bold rounded-full hover:bg-brand-primary transition-all duration-300 group shadow-xl"
                     >
                         View All Products
                         <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
