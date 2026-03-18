@@ -14,13 +14,40 @@ const navLinks = [
 export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [mobileHidden, setMobileHidden] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 10);
+        let lastScrollY = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            const isMobileViewport = window.innerWidth < 768;
+
+            setScrolled(currentScrollY > 10);
+
+            if (!isMobileViewport || mobileOpen) {
+                setMobileHidden(false);
+                lastScrollY = currentScrollY;
+                return;
+            }
+
+            if (currentScrollY <= 140) {
+                setMobileHidden(false);
+            } else if (currentScrollY > lastScrollY + 8) {
+                setMobileHidden(true);
+            } else if (currentScrollY < lastScrollY - 8) {
+                setMobileHidden(false);
+            }
+
+            lastScrollY = currentScrollY;
+        };
+
         window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [mobileOpen]);
 
     useEffect(() => {
         setMobileOpen(false);
@@ -28,7 +55,7 @@ export default function Header() {
 
     return (
         <header
-            className="fixed top-4 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8"
+            className={`fixed top-4 left-0 right-0 z-50 px-4 md:px-8 transition-transform duration-300 ${mobileHidden ? '-translate-y-[140%] md:translate-y-0' : 'translate-y-0'}`}
         >
             <nav
                 className={`flex items-center justify-between px-4 py-3 sm:px-6 max-w-7xl mx-auto w-full transition-all duration-500 rounded-2xl ${scrolled
