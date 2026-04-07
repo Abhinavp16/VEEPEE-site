@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import InquiryPopupButton from '@/components/InquiryPopupButton';
+import ProductImageGallery from '@/components/ProductImageGallery';
 import {
     buildFeaturedProductInquiryProps,
     featuredProductFallbackImage,
@@ -53,19 +54,16 @@ export default async function FeaturedProductDetailPage({ params }) {
             <section className="mx-auto max-w-7xl px-6 py-24">
                 <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
                     <ScrollReveal>
-                        <div className="overflow-hidden rounded-[2.3rem] border border-gray-100 bg-white p-5 shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
-                            <div className="relative aspect-square overflow-hidden rounded-[1.9rem] bg-neutral-surface">
-                                <img
-                                    src={product.image || featuredProductFallbackImage}
-                                    alt={product.name}
-                                    className="h-full w-full object-contain object-center"
-                                />
-                                {product.badge && (
-                                    <div className={`absolute left-5 top-5 rounded-xl px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] shadow-sm ${product.badgeStyle || 'border border-orange-100 bg-white text-brand-primary'}`}>
-                                        {product.badge}
-                                    </div>
-                                )}
-                            </div>
+                        <div className="relative">
+                            <ProductImageGallery
+                                images={product.images?.length > 0 ? product.images : [product.image || featuredProductFallbackImage]}
+                                name={product.name}
+                            />
+                            {product.badge && (
+                                <div className={`absolute left-10 top-10 rounded-xl px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] shadow-sm z-20 ${product.badgeStyle || 'border border-orange-100 bg-white text-brand-primary'}`}>
+                                    {product.badge}
+                                </div>
+                            )}
                         </div>
                     </ScrollReveal>
 

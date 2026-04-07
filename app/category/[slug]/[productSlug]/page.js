@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import InquiryPopupButton from '@/components/InquiryPopupButton';
+import ProductImageGallery from '@/components/ProductImageGallery';
 import {
     buildProductInquiryDetails,
     findCategoryBySlug,
@@ -59,20 +60,17 @@ export default async function ProductDetailPage({ params }) {
             <section className="py-24 px-6 max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-start">
                     <ScrollReveal>
-                        <div className="overflow-hidden rounded-[2.5rem] border border-gray-100 bg-white shadow-sm">
-                            <div className="relative aspect-[5/4] overflow-hidden bg-neutral-surface">
-                                <img
-                                    src={product.image || product.images?.[0] || productCardFallbackImage}
-                                    alt={product.name}
-                                    className="h-full w-full object-cover"
-                                />
-                                {displayPrice && (
-                                    <div className="absolute left-5 bottom-5 rounded-2xl bg-white/92 px-4 py-3 shadow-lg backdrop-blur">
-                                        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gray-400">Price</p>
-                                        <p className="text-xl font-black text-brand-primary">{displayPrice}</p>
-                                    </div>
-                                )}
-                            </div>
+                        <div className="relative">
+                            <ProductImageGallery
+                                images={product.images?.length > 0 ? product.images : [product.image || productCardFallbackImage]}
+                                name={product.name}
+                                displayPrice={displayPrice}
+                            />
+                            {product.badge && (
+                                <div className={`absolute left-10 top-10 rounded-xl px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] shadow-sm z-20 bg-white text-brand-primary border border-orange-100`}>
+                                    {product.badge}
+                                </div>
+                            )}
                         </div>
                     </ScrollReveal>
 
@@ -117,12 +115,8 @@ export default async function ProductDetailPage({ params }) {
                                         SKU: {product.sku}
                                     </span>
                                 )}
-                                {product.stock > 0 && (
-                                    <span className="rounded-full border border-orange-100 bg-orange-50 px-4 py-2 font-semibold text-brand-primary">
-                                        {product.stock} available
-                                    </span>
-                                )}
                             </div>
+
 
                             <div className="mt-10">
                                 <InquiryPopupButton
