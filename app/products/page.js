@@ -186,7 +186,7 @@ async function getWebsiteContent() {
         process.env.NEXT_PUBLIC_API_BASE_URL ||
         process.env.API_BASE_URL ||
         process.env.NEXT_PUBLIC_WEBSITE_API_BASE_URL ||
-        'https://veepee-impex.vercel.app/api/v1';
+        'https://veepee-backend.vercel.app/api/v1';
     const apiBase = rawBase.replace(/\/+$/, '');
 
     try {
