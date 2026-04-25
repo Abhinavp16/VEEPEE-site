@@ -40,10 +40,10 @@ function Counter({ end, duration = 2000, suffix = '' }) {
 }
 
 const stats = [
-    { value: 500, suffix: '+', label: 'Products Delivered', icon: '📦' },
-    { value: 28, suffix: '+', label: 'States Covered', icon: '🗺️' },
-    { value: 150, suffix: '+', label: 'Active Dealers', icon: '🤝' },
-    { value: 99, suffix: '%', label: 'Client Satisfaction', icon: '⭐' },
+    { value: 10000, suffix: '+', label: 'Products Delivered', icon: '\uD83D\uDCE6' },
+    { value: 28, suffix: '+', label: 'States Covered', icon: '\uD83D\uDDFA\uFE0F' },
+    { value: 250, suffix: '+', label: 'Active Dealers', icon: '\uD83E\uDD1D' },
+    { value: 99, suffix: '%', label: 'Client Satisfaction', icon: '\u2B50' },
 ];
 
 export default function StatsSection() {

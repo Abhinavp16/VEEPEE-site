@@ -53,7 +53,7 @@ export default function ContactSection() {
                                 <div>
                                     <p className="text-gray-400 text-sm font-bold uppercase mb-1">Official Correspondance</p>
                                     <p className="text-lg sm:text-2xl font-bold text-white italic underline decoration-brand-primary underline-offset-8 decoration-2 break-all">
-                                        ixveepee@gmail.com
+                                        vepemisc@gmail.com
                                     </p>
                                 </div>
                             </div>

@@ -52,7 +52,7 @@ export default function TermsPage() {
                             <div className="mb-12">
                                 <h2 className="text-3xl font-bold text-text-primary mb-6">5. Account Registration</h2>
                                 <p>
-                                    Users must provide accurate and complete information during registration. You are responsible for maintaining account confidentiality and all activities under your account. Unauthorized access must be reported immediately to ixveepee@gmail.com.
+                                    Users must provide accurate and complete information during registration. You are responsible for maintaining account confidentiality and all activities under your account. Unauthorized access must be reported immediately to vepemisc@gmail.com.
                                 </p>
                             </div>
 

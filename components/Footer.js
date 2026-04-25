@@ -48,7 +48,7 @@ export default function Footer() {
                                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                                         </svg>
                                     </div>
-                                    <span className="text-xs text-gray-400 font-medium">ixveepee@gmail.com</span>
+                                    <span className="text-xs text-gray-400 font-medium">vepemisc@gmail.com</span>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@ export default function Footer() {
                         </p>
                         <div className="flex flex-wrap gap-3">
                             <a
-                                href="mailto:ixveepee@gmail.com"
+                                href="mailto:vepemisc@gmail.com"
                                 className="px-5 py-2.5 bg-white/5 hover:bg-white text-white hover:text-black rounded-full text-sm font-semibold transition-all duration-300 border border-white/10 flex items-center gap-2"
                             >
                                 Email Us
@@ -81,7 +81,7 @@ export default function Footer() {
                         <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Follow Us</span>
                         <div className="flex gap-5">
                             {[
-                                { name: 'facebook', icon: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z', href: 'https://www.facebook.com/share/17bu3sXjc7/' },
+                                { name: 'facebook', icon: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z', href: 'https://www.facebook.com/people/Veepee-Impex/61579229665820' },
                                 { name: 'instagram', icon: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z', href: 'https://www.instagram.com/veepeeimpex_oxon?igsh=MTZtenV0aW15dWdvbA%3D%3D&utm_source=qr' },
                                 { name: 'youtube', icon: 'M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17', href: 'http://www.youtube.com/@Veepee-Impex' }
                             ].map((social) => (
@@ -111,7 +111,7 @@ export default function Footer() {
                         <div className="flex flex-col items-center lg:items-start">
                             <span className="text-xl font-bold tracking-tight text-white mb-1">Veepee <span className="text-brand-primary">Impex</span></span>
                             <p className="text-[10px] text-gray-500 font-medium tracking-wide">
-                                C-15/16, Sector-4, Devendra Nagar, Raipur, CG
+                                C-15/16, Sector-4, Devendra Nagar, Raipur, Chhattisgarh - 492001
                             </p>
                         </div>
 

@@ -111,15 +111,9 @@ export default function AboutPage() {
                         <div className="mt-10 p-6 bg-neutral-surface rounded-2xl border border-gray-100">
                             <h3 className="text-xl font-bold text-text-primary mb-4">Business Snapshot</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Type:</span> Trader - Wholesaler/Distributor</p>
-                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Business Models:</span> Retail Business, Wholesale Business</p>
-                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Key People:</span> Vaibhav Banka & Pitambar Gupta</p>
-                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Structure:</span> Partnership</p>
-                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Founded On:</span> 20-12-2023</p>
-                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Team Size:</span> Upto 10 People</p>
-                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Turnover:</span> 0 - 40 L</p>
+                                <p className="text-text-secondary"><span className="font-semibold text-text-primary">Type:</span> Importer and Manufacturer</p>
                                 <p className="text-text-secondary sm:col-span-2"><span className="font-semibold text-text-primary">Partners:</span> Pitambar Gupta, Jhanvi Gupta, Vaibhav Banka</p>
-                                <p className="text-text-secondary sm:col-span-2"><span className="font-semibold text-text-primary">Address:</span> C-15/16, Sector-4, Devendra Nagar, Raipur- 492001</p>
+                                <p className="text-text-secondary sm:col-span-2"><span className="font-semibold text-text-primary">Address:</span> C-15/16, Sector-4, Devendra Nagar, Raipur, Chhattisgarh - 492001</p>
                             </div>
                         </div>
 
