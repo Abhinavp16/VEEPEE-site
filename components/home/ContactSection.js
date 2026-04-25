@@ -1,10 +1,22 @@
 'use client';
 import ScrollReveal from '@/components/ScrollReveal';
+import { buildContactFormMessage, buildWhatsAppUrl } from '@/lib/inquiry';
 
 export default function ContactSection() {
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert('Enquiry received! Our team will contact you within 24 hours.');
+
+        const formData = new FormData(e.currentTarget);
+        const message = buildContactFormMessage({
+            name: formData.get('name')?.toString().trim() || '',
+            email: '',
+            phone: formData.get('phone')?.toString().trim() || '',
+            category: formData.get('category')?.toString().trim() || '',
+            message: formData.get('message')?.toString().trim() || '',
+        });
+
+        window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
+        e.currentTarget.reset();
     };
 
     return (
@@ -70,6 +82,7 @@ export default function ContactSection() {
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Your Name</label>
                                         <input
                                             type="text"
+                                            name="name"
                                             suppressHydrationWarning
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="Priya Sharma"
@@ -79,6 +92,7 @@ export default function ContactSection() {
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Phone Number</label>
                                         <input
                                             type="tel"
+                                            name="phone"
                                             suppressHydrationWarning
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="+91 98765 12345"
@@ -87,16 +101,15 @@ export default function ContactSection() {
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Category of Interest</label>
-                                    <select suppressHydrationWarning className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 appearance-none">
-                                        <option>Agricultural Machinery</option>
-                                        <option>Power Tools</option>
-                                        <option>Water Management</option>
-                                        <option>Wholesale Inquiry</option>
+                                    <select name="category" suppressHydrationWarning className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 appearance-none">
+                                        <option>Personal Use</option>
+                                        <option>Bulk Inquiry</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Your Message</label>
                                     <textarea
+                                        name="message"
                                         suppressHydrationWarning
                                         className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[120px]"
                                         placeholder="I want details for a water pump suitable for irrigation use near Durg."

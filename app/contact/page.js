@@ -1,11 +1,23 @@
 'use client';
 import PageHero from '@/components/PageHero';
 import ScrollReveal from '@/components/ScrollReveal';
+import { buildContactFormMessage, buildWhatsAppUrl } from '@/lib/inquiry';
 
 export default function ContactPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert('Your message has been sent! Our team will get back to you within 24 hours.');
+
+        const formData = new FormData(e.currentTarget);
+        const message = buildContactFormMessage({
+            name: formData.get('name')?.toString().trim() || '',
+            email: formData.get('email')?.toString().trim() || '',
+            phone: formData.get('phone')?.toString().trim() || '',
+            category: formData.get('category')?.toString().trim() || '',
+            message: formData.get('message')?.toString().trim() || '',
+        });
+
+        window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
+        e.currentTarget.reset();
     };
 
     return (
@@ -101,6 +113,7 @@ export default function ContactPage() {
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name</label>
                                         <input
                                             type="text"
+                                            name="name"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="Amit Verma"
                                             required
@@ -110,6 +123,7 @@ export default function ContactPage() {
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Email Address (Optional)</label>
                                         <input
                                             type="email"
+                                            name="email"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="amit.verma@gmail.com"
                                         />
@@ -120,6 +134,7 @@ export default function ContactPage() {
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Phone Number</label>
                                         <input
                                             type="tel"
+                                            name="phone"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
                                             placeholder="+91 98765 43210"
                                             required
@@ -127,19 +142,16 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Category of Interest</label>
-                                        <select className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 appearance-none">
-                                            <option>Agricultural Machinery</option>
-                                            <option>Power Tools</option>
-                                            <option>Water Management</option>
-                                            <option>Rice Mills</option>
-                                            <option>Wholesale Inquiry</option>
-                                            <option>Dealership Inquiry</option>
+                                        <select name="category" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 appearance-none">
+                                            <option>Personal Use</option>
+                                            <option>Bulk Inquiry</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Your Message</label>
                                     <textarea
+                                        name="message"
                                         className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[150px]"
                                         placeholder="Namaste, I am looking for a brush cutter for my farm near Raipur. Please share pricing and availability."
                                         required

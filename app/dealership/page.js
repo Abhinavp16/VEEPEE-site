@@ -1,6 +1,7 @@
 'use client';
 import PageHero from '@/components/PageHero';
 import ScrollReveal from '@/components/ScrollReveal';
+import { buildDealershipApplicationMessage, buildWhatsAppUrl } from '@/lib/inquiry';
 
 const dealerBenefits = [
     {
@@ -61,7 +62,19 @@ const steps = [
 export default function DealershipPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert('Your dealership application has been submitted! Our team will review it within 3 business days.');
+
+        const formData = new FormData(e.currentTarget);
+        const message = buildDealershipApplicationMessage({
+            name: formData.get('name')?.toString().trim() || '',
+            phone: formData.get('phone')?.toString().trim() || '',
+            shopName: formData.get('shopName')?.toString().trim() || '',
+            state: formData.get('state')?.toString().trim() || '',
+            city: formData.get('city')?.toString().trim() || '',
+            businessDescription: formData.get('businessDescription')?.toString().trim() || '',
+        });
+
+        window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
+        e.currentTarget.reset();
     };
 
     return (
@@ -193,30 +206,30 @@ export default function DealershipPage() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name *</label>
-                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Rakesh Gupta" required />
+                                        <input name="name" type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Rakesh Gupta" required />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Phone *</label>
-                                        <input type="tel" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="+91 98261 45870" required />
+                                        <input name="phone" type="tel" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="+91 98261 45870" required />
                                     </div>
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Shop Name</label>
-                                    <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Gupta Agro Tools" />
+                                    <input name="shopName" type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Gupta Agro Tools" />
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">State *</label>
-                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Chhattisgarh" required />
+                                        <input name="state" type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Chhattisgarh" required />
                                     </div>
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase mb-2">City *</label>
-                                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Raipur" required />
+                                        <input name="city" type="text" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900" placeholder="Raipur" required />
                                     </div>
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Business Description</label>
-                                    <textarea className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[120px]" placeholder="We run an agricultural equipment shop in Raipur and want to expand into Oxon products for nearby dealers and farmers." />
+                                    <textarea name="businessDescription" className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900 min-h-[120px]" placeholder="We run an agricultural equipment shop in Raipur and want to expand into Oxon products for nearby dealers and farmers." />
                                 </div>
                                 <button
                                     type="submit"

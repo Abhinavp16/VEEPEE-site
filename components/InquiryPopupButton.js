@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { WHATSAPP_NUMBER, buildWhatsAppMessage } from '@/lib/inquiry';
+import { buildWhatsAppMessage, buildWhatsAppUrl } from '@/lib/inquiry';
 
 export default function InquiryPopupButton({
     productName,
@@ -44,7 +44,7 @@ export default function InquiryPopupButton({
             details,
         });
 
-        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = buildWhatsAppUrl(message);
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
         setOpen(false);
