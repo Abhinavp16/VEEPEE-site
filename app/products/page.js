@@ -293,34 +293,26 @@ export default async function ProductsPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {productCategories.map((cat, i) => {
-                        const categoryProducts = getCategoryProducts(cat);
                         return (
                             <ScrollReveal key={i} delay={i * 80}>
                                 <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full flex flex-col">
-                                    <div className="h-48 overflow-hidden relative">
+                                    <div className="h-56 overflow-hidden bg-white p-4 flex items-center justify-center">
                                         <img
                                             src={cat.image || categoryCardFallbackImage}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                            className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
                                             alt={cat.name}
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                                        <h4 className="absolute bottom-4 left-4 right-4 text-white font-bold text-lg">{cat.name}</h4>
                                     </div>
-                                    <div className="p-6 flex-grow flex flex-col">
-                                        <p className="text-sm text-text-secondary mb-4 flex-grow">{cat.description}</p>
-                                        <ul className="space-y-1">
-                                            {categoryProducts.map((product, j) => (
-                                                <li key={j} className="flex items-center gap-2 text-xs text-text-secondary font-medium">
-                                                    <svg className="w-3 h-3 text-brand-primary shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                                                    </svg>
-                                                    {product.name}
-                                                </li>
-                                            ))}
-                                        </ul>
+                                    <div className="p-6 flex-grow flex flex-col items-center justify-between">
+                                        <div className="flex flex-col items-center">
+                                            <div className="mb-4 h-1 w-11 rounded-full bg-brand-primary/80" />
+                                            <h4 className="text-center text-text-primary font-bold text-[1.75rem] leading-tight">
+                                                {cat.name}
+                                            </h4>
+                                        </div>
                                         <Link
                                             href={`/category/${slugifyCategoryName(cat.name)}`}
-                                            className="mt-6 w-full py-3 bg-brand-primary text-white shadow-cta hover:bg-text-primary hover:text-white hover:shadow-xl rounded-2xl text-center text-sm font-bold transition-all duration-300 inline-block cursor-pointer"
+                                            className="mt-8 w-full py-3 bg-brand-primary text-white shadow-cta hover:bg-text-primary hover:text-white hover:shadow-xl rounded-2xl text-center text-sm font-bold transition-all duration-300 inline-block cursor-pointer"
                                         >
                                         {categoriesSection.buttonText || 'View All products'}
                                         </Link>

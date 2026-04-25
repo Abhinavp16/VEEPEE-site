@@ -149,12 +149,11 @@ export default function AboutPage() {
                                     alt="Veepee Impex office"
                                 />
                                 <div className="bg-brand-primary p-6 rounded-2xl text-white">
-                                    <p className="text-3xl font-bold italic mb-1">Since 2023</p>
-                                    <p className="text-xs uppercase tracking-tighter opacity-80">Trusted Partnership Firm</p>
+                                    <p className="text-3xl font-bold italic mb-1">30 years + Experience</p>
                                 </div>
-                                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                                    <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-brand-primary mb-1">Fast Dispatch</p>
-                                    <p className="text-sm font-semibold text-text-primary">Ready inventory and dependable fulfillment for dealers, retailers, and bulk buyers.</p>
+                                <div className="bg-[#1d4ed8] p-6 rounded-2xl text-white">
+                                    <p className="text-3xl font-bold italic mb-1">Fast Dispatch</p>
+                                    <p className="text-xs uppercase tracking-tighter opacity-80">With in 24 hrs</p>
                                 </div>
                             </div>
                             <div className="space-y-4">
