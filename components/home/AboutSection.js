@@ -43,7 +43,7 @@ export default function AboutSection() {
                                 <p className="text-sm font-semibold text-text-primary">Trusted supply network for retail and wholesale demand.</p>
                             </div>
                             <img
-                                src="/images/about/front.png"
+                                src="/images/about/front.jpeg"
                                 className="rounded-2xl shadow-lg w-full h-auto object-contain object-center"
                                 alt="Veepee Impex storefront"
                             />

@@ -139,13 +139,13 @@ export default function AboutPage() {
                                     <p className="text-sm font-semibold text-text-primary">Trusted supply network for retail and wholesale demand.</p>
                                 </div>
                                 <img
-                                    src="/images/about/front.png"
+                                    src="/images/about/front.jpeg"
                                     className="rounded-2xl shadow-lg w-full h-auto object-contain object-center"
                                     alt="Industrial Tools"
                                 />
                                 <img
-                                    src="/images/about/office.png"
-                                    className="rounded-2xl shadow-lg w-full h-auto sm:h-[200px] object-contain object-center sm:object-cover"
+                                    src="/images/about/partners.jpeg"
+                                    className="rounded-2xl shadow-lg w-full h-auto object-contain object-center"
                                     alt="Veepee Impex office"
                                 />
                                 <div className="bg-brand-primary p-6 rounded-2xl text-white">
