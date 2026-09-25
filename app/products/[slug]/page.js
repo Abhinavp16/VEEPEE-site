@@ -6,15 +6,13 @@ import ProductImageGallery from '@/components/ProductImageGallery';
 import {
     buildFeaturedProductInquiryProps,
     featuredProductFallbackImage,
-    findFeaturedProductBySlug,
+    getCatalogProduct,
     getFeaturedDescription,
-    getFeaturedProducts,
 } from '@/lib/featured-products';
 
 export async function generateMetadata({ params }) {
     const resolvedParams = await params;
-    const products = await getFeaturedProducts();
-    const product = findFeaturedProductBySlug(products, resolvedParams.slug);
+    const product = await getCatalogProduct(resolvedParams.slug);
 
     return {
         title: product ? `${product.name} - Veepee Impex` : 'Product Details - Veepee Impex',
@@ -24,8 +22,7 @@ export async function generateMetadata({ params }) {
 
 export default async function FeaturedProductDetailPage({ params }) {
     const resolvedParams = await params;
-    const products = await getFeaturedProducts();
-    const product = findFeaturedProductBySlug(products, resolvedParams.slug);
+    const product = await getCatalogProduct(resolvedParams.slug);
 
     if (!product) {
         return (
