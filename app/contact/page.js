@@ -71,8 +71,8 @@ export default function ContactPage() {
                                 <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/45 mb-3">Official Desk</p>
                                 <h4 className="text-[2rem] font-primary font-bold mb-3">Email Us</h4>
                                 <p className="text-white/60 text-sm mb-6">Official Correspondance</p>
-                                <a href="mailto:vepemisc@gmail.com" className="text-xl font-black text-brand-primary hover:underline break-all">
-                                    vepemisc@gmail.com
+                                <a href="mailto:ixveepee@gmail.com" className="text-xl font-black text-brand-primary hover:underline break-all">
+                                    ixveepee@gmail.com
                                 </a>
                             </div>
                         </div>
@@ -125,7 +125,7 @@ export default function ContactPage() {
                                             type="email"
                                             name="email"
                                             className="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl focus:border-brand-primary focus:bg-white focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none text-gray-900"
-                                            placeholder="vepemisc@gmail.com"
+                                            placeholder="you@example.com"
                                         />
                                     </div>
                                 </div>
