@@ -48,7 +48,7 @@ export default function Footer() {
                                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                                         </svg>
                                     </div>
-                                    <span className="text-xs text-gray-400 font-medium">vepemisc@gmail.com</span>
+                                    <span className="text-xs text-gray-400 font-medium">ixveepee@gmail.com</span>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@ export default function Footer() {
                         </p>
                         <div className="flex flex-wrap gap-3">
                             <a
-                                href="mailto:vepemisc@gmail.com"
+                                href="mailto:ixveepee@gmail.com"
                                 className="px-5 py-2.5 bg-white/5 hover:bg-white text-white hover:text-black rounded-full text-sm font-semibold transition-all duration-300 border border-white/10 flex items-center gap-2"
                             >
                                 Email Us
@@ -119,6 +119,7 @@ export default function Footer() {
                             {[
                                 { name: 'Terms', href: '/terms' },
                                 { name: 'Privacy', href: '/privacy' },
+                                { name: 'Delete Account', href: '/delete-account' },
                                 { name: 'Shipping', href: '/shipping' },
                                 { name: 'Refund', href: '/refund' },
                                 { name: 'Warranty', href: '/warranty' },
